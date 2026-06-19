@@ -66,7 +66,6 @@ func update_animation() -> void:
 	elif velocity.length() > 0:
 		# velocity.length() > 0 signifie que le personnage bouge (peu importe la direction)
 		anim.play("walk")
-<<<<<<< HEAD
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -78,5 +77,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		# 2. On crée le menu et on l'affiche par-dessus le niveau
 		var pause_instance = PAUSE_MENU.instantiate()
 		add_child(pause_instance)
-=======
->>>>>>> f7f087c (feat(Actor): better movements and dash)
