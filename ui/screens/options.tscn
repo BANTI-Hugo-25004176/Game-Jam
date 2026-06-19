@@ -66,7 +66,6 @@ text = "OPT_FULLSCREEN"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
-flat = true
 
 [node name="LanguageRow" type="HBoxContainer" parent="Center/VBox"]
 custom_minimum_size = Vector2(460, 0)
