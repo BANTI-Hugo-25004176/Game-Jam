@@ -19,6 +19,12 @@ func _on_action(action:String)->void:
 			_go("res://ui/screens/main_menu.tscn")
 		"quit":
 			get_tree().quit()
+			
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
+		get_tree().paused = false
+		queue_free()
 
 func _go(path:String)->void:
 	var _ui:Node = get_node_or_null("/root/UI")

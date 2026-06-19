@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://bat7je2jx3d05"]
 
-[ext_resource type="Script" path="res://ui/screens/main_menu.gd" id="1_mm"]
+[ext_resource type="Script" uid="uid://c7u5r3ods2u33" path="res://ui/screens/main_menu.gd" id="1_mm"]
 [ext_resource type="PackedScene" path="res://ui/components/menu_screen.tscn" id="2_ms"]
-[ext_resource type="Script" path="res://ui/data/menu_item.gd" id="3_mi"]
+[ext_resource type="Script" uid="uid://cpiebnhogu6g5" path="res://ui/data/menu_item.gd" id="3_mi"]
 
 [sub_resource type="Resource" id="Res_play"]
 script = ExtResource("3_mi")
 text_key = "MENU_PLAY"
 action = "play"
-target_scene = ""
 
 [sub_resource type="Resource" id="Res_options"]
 script = ExtResource("3_mi")
@@ -20,9 +19,8 @@ target_scene = "res://ui/screens/options.tscn"
 script = ExtResource("3_mi")
 text_key = "MENU_QUIT"
 action = "quit"
-target_scene = ""
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=617264264]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,12 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mm")
 
-[node name="MenuScreen" parent="." instance=ExtResource("2_ms")]
+[node name="MenuScreen" parent="." unique_id=1845727160 instance=ExtResource("2_ms")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 title_key = "TITLE_MAIN"
 items = Array[ExtResource("3_mi")]([SubResource("Res_play"), SubResource("Res_options"), SubResource("Res_quit")])
