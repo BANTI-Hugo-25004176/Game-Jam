@@ -70,6 +70,8 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_u5hhe"]
+
 [node name="Actor" type="CharacterBody2D" unique_id=1205379326]
 script = ExtResource("1_fpx7a")
 
@@ -81,3 +83,15 @@ shape = SubResource("RectangleShape2D_i104h")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_j8omb")
 animation = &"walk"
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1775101035]
+unique_name_in_owner = true
+position = Vector2(7, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=1697762610]
+position = Vector2(1.75, 0)
+scale = Vector2(4.5, 1)
+texture = SubResource("CanvasTexture_u5hhe")
+
+[node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1126108307]
+position = Vector2(4, 0)

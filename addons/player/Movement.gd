@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal shoot_fired(pos: Vector2, dir: Vector2)
+
 # --- Mouvement Normal ---
 @export var max_speed: float = 300.0
 @export var acceleration: float = 1500.0
@@ -9,6 +11,9 @@ extends CharacterBody2D
 @export var dash_speed: float = 800.0
 @export var dash_duration: float = 0.15
 @export var dash_cooldown: float = 0.5
+
+@onready var weapon: Node2D = $Weapon
+@onready var muzzle: Marker2D = $Weapon/Muzzle
 
 var is_dashing: bool = false
 var can_dash: bool = true
@@ -39,8 +44,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	# --- NOUVEAU : Mettre à jour l'animation à chaque frame ---
 	update_animation()
+	
+	weapon.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed("shoot"):
+		fire()
+	
 
 
 func start_dash() -> void:
@@ -77,3 +87,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		# 2. On crée le menu et on l'affiche par-dessus le niveau
 		var pause_instance = PAUSE_MENU.instantiate()
 		add_child(pause_instance)
+		
+func fire() -> void:
+	var shoot_direction = (get_global_mouse_position() - muzzle.global_position).normalized()
+	shoot_fired.emit(muzzle.global_position, shoot_direction)
