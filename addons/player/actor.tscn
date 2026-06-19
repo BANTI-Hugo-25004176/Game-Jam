@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://ctp1yd7pgh7fr"]
+
+[ext_resource type="Script" uid="uid://dswpc0re4ft2t" path="res://addons/player/Movement.gd" id="1_fpx7a"]
+[ext_resource type="Texture2D" uid="uid://dnw086nddtkr7" path="res://assets/plumber_16x16_strip.png" id="1_i104h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i104h"]
+size = Vector2(11, 15.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i104h"]
+atlas = ExtResource("1_i104h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpx7a"]
+atlas = ExtResource("1_i104h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcyu1"]
+atlas = ExtResource("1_i104h")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ojx"]
+atlas = ExtResource("1_i104h")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crt3x"]
+atlas = ExtResource("1_i104h")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5cyv"]
+atlas = ExtResource("1_i104h")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0omwe"]
+atlas = ExtResource("1_i104h")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcudv"]
+atlas = ExtResource("1_i104h")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8omb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i104h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpx7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcyu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ojx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crt3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5cyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0omwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcudv")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[node name="Actor" type="CharacterBody2D" unique_id=1205379326]
+script = ExtResource("1_fpx7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=959965473]
+position = Vector2(0.5, -8.25)
+shape = SubResource("RectangleShape2D_i104h")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1617538658]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=819826571]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_j8omb")
+animation = &"walk"
