@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/components/menu_button.gd" id="1_btn"]
+
+[node name="MenuButton" type="Button"]
+custom_minimum_size = Vector2(280, 56)
+focus_mode = 2
+text = "MENU_ITEM"
+script = ExtResource("1_btn")
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
