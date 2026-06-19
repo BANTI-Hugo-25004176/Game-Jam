@@ -14,7 +14,7 @@ target_scene = ""
 script = ExtResource("3_mi")
 text_key = "MENU_OPTIONS"
 action = "options"
-target_scene = ""
+target_scene = "res://ui/screens/options.tscn"
 
 [sub_resource type="Resource" id="Res_quit"]
 script = ExtResource("3_mi")
