@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3]
+[gd_resource type="Theme" load_steps=8 format=3]
 
 [ext_resource type="FontFile" path="res://ui/theme/fonts/DIESELPUNK.ttf" id="1_font"]
 
@@ -82,6 +82,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxEmpty" id="flat"]
+
 [resource]
 default_font = ExtResource("1_font")
 default_font_size = 28
@@ -97,3 +99,27 @@ Button/styles/hover = SubResource("btn_hover")
 Button/styles/normal = SubResource("btn_normal")
 Button/styles/pressed = SubResource("btn_pressed")
 Label/colors/font_color = Color(0.92, 0.87, 0.77, 1)
+CheckButton/colors/font_color = Color(0.9, 0.85, 0.74, 1)
+CheckButton/colors/font_disabled_color = Color(0.5, 0.47, 0.42, 1)
+CheckButton/colors/font_focus_color = Color(1, 0.86, 0.45, 1)
+CheckButton/colors/font_hover_color = Color(1, 0.86, 0.45, 1)
+CheckButton/colors/font_hover_pressed_color = Color(1, 0.86, 0.45, 1)
+CheckButton/colors/font_pressed_color = Color(1, 0.86, 0.45, 1)
+CheckButton/styles/disabled = SubResource("flat")
+CheckButton/styles/focus = SubResource("btn_focus")
+CheckButton/styles/hover = SubResource("flat")
+CheckButton/styles/hover_pressed = SubResource("flat")
+CheckButton/styles/normal = SubResource("flat")
+CheckButton/styles/pressed = SubResource("flat")
+CheckBox/colors/font_color = Color(0.9, 0.85, 0.74, 1)
+CheckBox/colors/font_disabled_color = Color(0.5, 0.47, 0.42, 1)
+CheckBox/colors/font_focus_color = Color(1, 0.86, 0.45, 1)
+CheckBox/colors/font_hover_color = Color(1, 0.86, 0.45, 1)
+CheckBox/colors/font_hover_pressed_color = Color(1, 0.86, 0.45, 1)
+CheckBox/colors/font_pressed_color = Color(1, 0.86, 0.45, 1)
+CheckBox/styles/disabled = SubResource("flat")
+CheckBox/styles/focus = SubResource("btn_focus")
+CheckBox/styles/hover = SubResource("flat")
+CheckBox/styles/hover_pressed = SubResource("flat")
+CheckBox/styles/normal = SubResource("flat")
+CheckBox/styles/pressed = SubResource("flat")
