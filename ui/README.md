@@ -1,70 +1,72 @@
-# GUI Template
+# Template d'interface (GUI)
 
-A small, reusable system for building menus/screens fast and consistently.
-Everything is **data-driven** and **localized (FR/EN)** out of the box.
+Un petit système réutilisable pour créer des menus/écrans rapidement et de façon
+cohérente. Tout est **piloté par les données** et **traduit (FR/EN)** d'origine.
 
-## Files
+## Fichiers
 
-| File | What it is |
-|------|------------|
-| `components/menu_screen.tscn` (+ `.gd`) | The reusable screen: a title + a vertical list of buttons, built from data. |
-| `components/menu_button.tscn` (+ `.gd`) | The reusable button (focus + hover/click sound). You rarely touch this. |
-| `data/menu_item.gd` | A `MenuItem` resource = one button (label key + action or target scene). |
-| `theme/game_theme.tres` | The shared visual theme. **Style everything from here.** |
-| `localization/ui_text.csv` | All UI text, in English and French. |
-| `autoload/ui_manager.tscn` (+ `.gd`) | Autoload `UI`: scene fade transitions + language switch. |
-| `screens/main_menu.tscn` (+ `.gd`) | Example screen built with the template — copy this as a starting point. |
+| Fichier | Rôle |
+|---------|------|
+| `components/menu_screen.tscn` (+ `.gd`) | L'écran réutilisable : un titre + une liste de boutons, construite à partir des données. |
+| `components/menu_button.tscn` (+ `.gd`) | Le bouton réutilisable (focus + son survol/clic). Tu y touches rarement. |
+| `data/menu_item.gd` | Une ressource `MenuItem` = un bouton (clé de libellé + action ou scène cible). |
+| `theme/game_theme.tres` | Le thème visuel partagé. **C'est ici qu'on style tout.** |
+| `localization/ui_text.csv` | Tous les textes de l'UI, en français et anglais. |
+| `autoload/ui_manager.tscn` (+ `.gd`) | Autoload `UI` : transitions (fondu) entre scènes + changement de langue. |
+| `screens/` | Les écrans déjà faits : `main_menu`, `options`, `pause`, `game_over`, `victory`. |
 
-## Make a new screen in 3 steps
+## Créer un nouvel écran en 3 étapes
 
-1. **Duplicate** `screens/main_menu.tscn` and rename it (e.g. `pause_menu.tscn`).
-2. Select the inner **`MenuScreen`** node and, in the Inspector, set:
-   - **Title Key** — a key from `ui_text.csv` (e.g. `TITLE_PAUSE`).
-   - **Items** — one `MenuItem` per button. For each item set:
-     - **Text Key** — a key from `ui_text.csv` (e.g. `MENU_RESUME`).
-     - Either **Target Scene** (the button opens that scene) …
-     - … **or** an **Action** string (the button reports an action to handle in code).
-3. If you used any **Action** buttons, edit the screen's script to handle them
-   (see `screens/main_menu.gd`). Pure navigation screens (only Target Scene
-   buttons) need **no script at all**.
+1. **Duplique** `screens/main_menu.tscn` et renomme-le (ex. `credits.tscn`).
+2. Sélectionne le nœud **`MenuScreen`** et, dans l'Inspecteur, règle :
+   - **Title Key** — une clé de `ui_text.csv` (ex. `TITLE_PAUSE`).
+   - **Items** — un `MenuItem` par bouton. Pour chaque item :
+     - **Text Key** — une clé de `ui_text.csv` (ex. `MENU_RESUME`).
+     - Soit **Target Scene** (le bouton ouvre cette scène)…
+     - … soit une chaîne **Action** (le bouton signale une action à gérer en code).
+3. Si tu as utilisé des boutons **Action**, gère-les dans le script de l'écran
+   (voir `screens/main_menu.gd`). Un écran de pure navigation (uniquement des
+   boutons Target Scene) n'a **besoin d'aucun script**.
 
-That's it — keyboard + gamepad navigation and FR/EN are automatic.
+C'est tout — la navigation clavier + manette et le FR/EN sont automatiques.
 
-## Buttons: two modes
+## Boutons : deux modes
 
-- **Navigation button** → set `target_scene` on the `MenuItem`. Pressing it changes
-  to that scene (with a fade, via the `UI` autoload).
-- **Action button** → leave `target_scene` empty and set `action` (e.g. `"quit"`).
-  The screen emits `action_pressed(action)`; handle it in the screen's script:
+- **Bouton de navigation** → renseigne `target_scene` sur le `MenuItem`. Appuyer
+  dessus change de scène (avec un fondu, via l'autoload `UI`).
+- **Bouton d'action** → laisse `target_scene` vide et renseigne `action`
+  (ex. `"quit"`). L'écran émet `action_pressed(action)` ; gère-le dans le script :
 
 ```gdscript
 func _on_action(action: String) -> void:
-    match action:
-        "resume": get_tree().paused = false
-        "quit":   get_tree().quit()
+	match action:
+		"resume": get_tree().paused = false
+		"quit":   get_tree().quit()
 ```
 
-## Text & translation (FR/EN)
+## Textes & traduction (FR/EN)
 
-- All labels are **keys**, never raw text. Add a row to `localization/ui_text.csv`:
+- Tous les libellés sont des **clés**, jamais du texte brut. Ajoute une ligne à
+  `localization/ui_text.csv` :
 
   ```csv
   keys,en,fr
   MENU_CREDITS,Credits,Crédits
   ```
 
-- Use the key as a Title Key or Text Key. Godot translates automatically and
-  re-translates live when the language changes.
-- The game starts in **French**. Switch at runtime with `UI.set_language("en")`
-  (this is what the Options language toggle will call).
+- Utilise la clé comme Title Key ou Text Key. Godot traduit automatiquement et
+  re-traduit en direct quand la langue change.
+- Le jeu démarre en **français**. Pour changer à l'exécution :
+  `UI.set_language("en")` (c'est ce qu'appelle le sélecteur de langue des Options).
 
-## Styling
+## Style (le thème)
 
-Open `theme/game_theme.tres` and edit it. Fonts, colours, and button states
-(normal / hover / pressed / focused) all live here, so changing it restyles
-**every** screen at once. Per-screen tweaks can still be set on individual nodes.
+Ouvre `theme/game_theme.tres` : un **double-clic** affiche l'éditeur de thème dans
+le panneau du bas de Godot. Polices, couleurs et états des boutons (normal /
+survol / pressé / focus) y sont tous définis — modifier le thème restyle **tous**
+les écrans d'un coup. Des ajustements par écran restent possibles sur chaque nœud.
 
-## The `UI` autoload
+## L'autoload `UI`
 
-- `UI.change_scene("res://path/to/scene.tscn")` — fade out, swap, fade in.
-- `UI.set_language("fr" | "en")` — switch UI language at runtime.
+- `UI.change_scene("res://chemin/vers/scene.tscn")` — fondu, change de scène, fondu.
+- `UI.set_language("fr" | "en")` — change la langue de l'UI à l'exécution.

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/screens/end_screen.gd" id="1_end"]
+[ext_resource type="PackedScene" path="res://ui/components/menu_screen.tscn" id="2_ms"]
+[ext_resource type="Script" path="res://ui/data/menu_item.gd" id="3_mi"]
+
+[sub_resource type="Resource" id="Res_retry"]
+script = ExtResource("3_mi")
+text_key = "MENU_PLAY_AGAIN"
+action = "retry"
+target_scene = ""
+
+[sub_resource type="Resource" id="Res_menu"]
+script = ExtResource("3_mi")
+text_key = "MENU_MAIN_MENU"
+action = ""
+target_scene = "res://ui/screens/main_menu.tscn"
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_end")
+
+[node name="Menu" parent="." instance=ExtResource("2_ms")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+title_key = "TITLE_VICTORY"
+items = Array[ExtResource("3_mi")]([SubResource("Res_retry"), SubResource("Res_menu")])
