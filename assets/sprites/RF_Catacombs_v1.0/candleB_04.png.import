@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coiwqwi0jgb6o"
-path="res://.godot/imported/DieselPunkSlums_1.png-ba756f319d8e537a9d0b02bf609a2a74.ctex"
+uid="uid://ds5m8mgcc3gvr"
+path="res://.godot/imported/candleB_04.png-bf887d3aae97ca3b705ca01187afd492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DieselPunkSlums_1.png"
-dest_files=["res://.godot/imported/DieselPunkSlums_1.png-ba756f319d8e537a9d0b02bf609a2a74.ctex"]
+source_file="res://assets/sprites/RF_Catacombs_v1.0/candleB_04.png"
+dest_files=["res://.godot/imported/candleB_04.png-bf887d3aae97ca3b705ca01187afd492.ctex"]
 
 [params]
 

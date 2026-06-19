@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjt2t0bso8xsw"
-path="res://.godot/imported/Junkyard_1.png-55740c726b1f581f25069a736c0b92d1.ctex"
+uid="uid://bfcng8uypulr6"
+path="res://.godot/imported/DieselPunkSlums_2.png-5c86247373e8e91f88cb6bda43f83170.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Junkyard_1.png"
-dest_files=["res://.godot/imported/Junkyard_1.png-55740c726b1f581f25069a736c0b92d1.ctex"]
+source_file="res://assets/sprites/DieselPunkSlums_2.png"
+dest_files=["res://.godot/imported/DieselPunkSlums_2.png-5c86247373e8e91f88cb6bda43f83170.ctex"]
 
 [params]
 
