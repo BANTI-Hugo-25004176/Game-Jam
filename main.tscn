@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://buaq673iyr04d"]
 
+[ext_resource type="Script" uid="uid://yow5y37d3njq" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctp1yd7pgh7fr" path="res://addons/player/actor.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node2D" unique_id=1015292808]
 scale = Vector2(5.7749524, 5.7749524)
+script = ExtResource("1_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=416932846]
 position = Vector2(0, -8.311756)
 position_smoothing_enabled = true
 
 [node name="Actor" parent="." unique_id=1205379326 instance=ExtResource("1_ig7tw")]
+
+[connection signal="shoot_fired" from="Actor" to="." method="_on_player_shoot_fired"]
