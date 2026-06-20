@@ -985,17 +985,10 @@ size = Vector2(31, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vamvc"]
 custom_solver_bias = 0.248
-size = Vector2(117.125, 29)
+size = Vector2(54.5625, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iegd"]
-size = Vector2(24, 104)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
-custom_solver_bias = 0.248
-size = Vector2(106, 16.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
-size = Vector2(24, 75.5)
+size = Vector2(22, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkeq5"]
 size = Vector2(20, 237)
@@ -1030,7 +1023,7 @@ size = Vector2(52.5, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rysoc"]
 custom_solver_bias = 0.248
-size = Vector2(49, 16.5)
+size = Vector2(15.5, 25)
 
 [node name="Game" type="Node2D" unique_id=368076374]
 script = ExtResource("1_0tnpc")
@@ -1090,20 +1083,28 @@ position = Vector2(2465.5, 121)
 shape = SubResource("RectangleShape2D_ssvqc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=287021900]
-position = Vector2(-115.4375, 213)
+position = Vector2(-124, 140)
+shape = SubResource("RectangleShape2D_vamvc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=2033798185]
+position = Vector2(142, 173)
 shape = SubResource("RectangleShape2D_vamvc")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=703387271]
-position = Vector2(-182, 159)
+position = Vector2(-161, 125)
 shape = SubResource("RectangleShape2D_5iegd")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=46665682]
-position = Vector2(133, 219)
-shape = SubResource("RectangleShape2D_gee14")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=2138937508]
+position = Vector2(163, 158)
+shape = SubResource("RectangleShape2D_5iegd")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1667712441]
-position = Vector2(182, 172.25)
-shape = SubResource("RectangleShape2D_0tnpc")
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D" unique_id=1573218459]
+position = Vector2(-100, 182)
+shape = SubResource("RectangleShape2D_5iegd")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D" unique_id=1130215]
+position = Vector2(126, 206)
+shape = SubResource("RectangleShape2D_5iegd")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1533018760]
 position = Vector2(-326, -52.5)
@@ -1139,6 +1140,22 @@ shape = SubResource("RectangleShape2D_ca42v")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D" unique_id=1936251945]
 position = Vector2(2679.5, 78)
+shape = SubResource("RectangleShape2D_rysoc")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D" unique_id=2015398740]
+position = Vector2(119, -398)
+shape = SubResource("RectangleShape2D_rysoc")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D" unique_id=1489265933]
+position = Vector2(510, -248)
+shape = SubResource("RectangleShape2D_rysoc")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D" unique_id=2080646153]
+position = Vector2(1816, -247)
+shape = SubResource("RectangleShape2D_rysoc")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D" unique_id=275408406]
+position = Vector2(2163, -254)
 shape = SubResource("RectangleShape2D_rysoc")
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
