@@ -9,6 +9,11 @@ script = ExtResource("3_mi")
 text_key = "MENU_RESUME"
 action = "resume"
 
+[sub_resource type="Resource" id="Res_options"]
+script = ExtResource("3_mi")
+text_key = "MENU_OPTIONS"
+action = "options"
+
 [sub_resource type="Resource" id="Res_menu"]
 script = ExtResource("3_mi")
 text_key = "MENU_MAIN_MENU"
@@ -35,4 +40,4 @@ color = Color(0, 0, 0, 0.6)
 [node name="Menu" parent="." unique_id=623813029 instance=ExtResource("2_ms")]
 unique_name_in_owner = true
 title_key = "TITLE_PAUSE"
-items = Array[ExtResource("3_mi")]([SubResource("Res_resume"), SubResource("Res_menu"), SubResource("Res_quit")])
+items = Array[ExtResource("3_mi")]([SubResource("Res_resume"), SubResource("Res_options"), SubResource("Res_menu"), SubResource("Res_quit")])

@@ -3,6 +3,13 @@ extends Control
 ## Options screen: volume, fullscreen, language. Built bespoke (not from MenuScreen)
 ## because it uses sliders/toggles instead of a plain button list — a good example
 ## of a custom screen that still shares the theme + localization.
+##
+## Deux modes :
+##  - plein écran : "Retour" change de scène vers `back_scene` (depuis le menu principal).
+##  - superposition : si `back_scene` est vide, "Retour" émet `closed` sans changer de
+##    scène (utilisé par le menu pause pour garder la partie en cours dessous).
+
+signal closed
 
 @export_file("*.tscn") var back_scene:String = "res://ui/screens/main_menu.tscn"
 
@@ -46,6 +53,11 @@ func _on_language_selected(index:int)->void:
 		TranslationServer.set_locale(_locale)
 
 func _on_back()->void:
+	# Mode superposition (menu pause) : on ferme sans changer de scène.
+	if back_scene == "":
+		closed.emit()
+		queue_free()
+		return
 	var _ui:Node = get_node_or_null("/root/UI")
 	if _ui != null and _ui.has_method("change_scene"):
 		_ui.change_scene(back_scene)
