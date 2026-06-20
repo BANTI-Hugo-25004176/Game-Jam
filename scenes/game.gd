@@ -7,7 +7,7 @@ extends Node2D
 func _ready():
 	jouer_cinematique()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if animation_player.is_playing():
 		var nom_anim = player.etat_initial
 		if anim.animation != nom_anim:
@@ -17,6 +17,6 @@ func jouer_cinematique():
 	animation_player.play("intro")
 	player.can_move = false
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	player.can_move = true
 	animation_player.clear_queue()
