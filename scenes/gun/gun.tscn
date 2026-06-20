@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://bvi1fwfiyttda"]
 
 [ext_resource type="Script" uid="uid://ugddrsii8itt" path="res://scenes/gun/gun.gd" id="1_csbbp"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_j8omb"]
+[ext_resource type="Texture2D" uid="uid://dkgjr1pty5ujv" path="res://assets/gun.png" id="2_fjnj2"]
 
 [node name="Gun" type="CharacterBody2D" unique_id=1670762173]
 script = ExtResource("1_csbbp")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=986883926]
-position = Vector2(10.999999, 0)
-scale = Vector2(6.731679, 0.7065103)
-texture = SubResource("CanvasTexture_j8omb")
+[node name="Timer" type="Timer" parent="." unique_id=140182477]
+wait_time = 4.0
+one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1618925298]
-position = Vector2(15, 0)
+position = Vector2(16, 0)
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=1458851484]
+position = Vector2(10.000001, 1.4210855e-14)
+scale = Vector2(0.53749996, 0.4875)
+texture = ExtResource("2_fjnj2")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
