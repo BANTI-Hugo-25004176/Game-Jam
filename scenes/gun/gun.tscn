@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bvi1fwfiyttda"]
+
+[ext_resource type="Script" uid="uid://ugddrsii8itt" path="res://scenes/gun/gun.gd" id="1_csbbp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j8omb"]
+
+[node name="Gun" type="CharacterBody2D" unique_id=1670762173]
+script = ExtResource("1_csbbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=986883926]
+position = Vector2(10.999999, 0)
+scale = Vector2(6.731679, 0.7065103)
+texture = SubResource("CanvasTexture_j8omb")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1618925298]
+position = Vector2(15, 0)
