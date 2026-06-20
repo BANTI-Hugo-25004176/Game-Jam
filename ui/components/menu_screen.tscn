@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://dj7mq7xfd82j6"]
 
-[ext_resource type="Script" path="res://ui/components/menu_screen.gd" id="1_scr"]
+[ext_resource type="Script" uid="uid://d4goq10e6cbbs" path="res://ui/components/menu_screen.gd" id="1_scr"]
 [ext_resource type="PackedScene" path="res://ui/components/menu_button.tscn" id="2_btn"]
-[ext_resource type="Theme" path="res://ui/theme/game_theme.tres" id="3_thm"]
+[ext_resource type="Theme" uid="uid://bxl0qyheq3wy4" path="res://ui/theme/game_theme.tres" id="3_thm"]
 
-[node name="MenuScreen" type="Control"]
+[node name="MenuScreen" type="Control" unique_id=1102649554]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ theme = ExtResource("3_thm")
 script = ExtResource("1_scr")
 button_scene = ExtResource("2_btn")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Center" type="CenterContainer" parent="." unique_id=707600981]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,18 +23,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center"]
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1756763549]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Title" type="Label" parent="Center/VBox"]
+[node name="Title" type="Label" parent="Center/VBox" unique_id=334558391]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-horizontal_alignment = 1
 text = "TITLE"
+horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="Center/VBox"]
+[node name="Buttons" type="VBoxContainer" parent="Center/VBox" unique_id=684414610]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
