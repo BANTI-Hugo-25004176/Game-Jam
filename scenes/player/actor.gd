@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.5
 @export var rotate_flag: bool = true
+@export_enum("right", "dash_right", "left") var etat_initial: String = "right"
 
 @onready var anim: AnimatedSprite2D = $BodyRotate/AnimatedSprite2D
 
@@ -17,23 +18,25 @@ const PAUSE_MENU = preload("res://ui/screens/pause.tscn")
 var is_dashing: bool = false
 var can_dash: bool = true
 var last_direction: Vector2 = Vector2.RIGHT
+var can_move = true
 
 func _physics_process(delta: float) -> void:
-	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if can_move:
+		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	if input_dir != Vector2.ZERO:
-		last_direction = input_dir.normalized()
-
-	if is_dashing:
-		velocity = last_direction * dash_speed
-	else:
 		if input_dir != Vector2.ZERO:
-			velocity = velocity.move_toward(input_dir * max_speed, acceleration * delta)
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+			last_direction = input_dir.normalized()
 
-	move_and_slide()
-	update_animation()
+		if is_dashing:
+			velocity = last_direction * dash_speed
+		else:
+			if input_dir != Vector2.ZERO:
+				velocity = velocity.move_toward(input_dir * max_speed, acceleration * delta)
+			else:
+				velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+
+		move_and_slide()
+		update_animation()
 
 func start_dash() -> void:
 	is_dashing = true

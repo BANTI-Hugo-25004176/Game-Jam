@@ -881,6 +881,91 @@ sources/3 = SubResource("TileSetAtlasSource_ir15t")
 sources/4 = SubResource("TileSetAtlasSource_ca42v")
 sources/5 = SubResource("TileSetAtlasSource_rysoc")
 
+[sub_resource type="Animation" id="Animation_0tnpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-482.265, -38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:etat_initial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.07, 3.07)]
+}
+
+[sub_resource type="Animation" id="Animation_vtaks"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1.8660663, 1, 0.48296863),
+"update": 0,
+"values": [Vector2(-482.265, -38), Vector2(-379.00003, -38), Vector2(-312, -91), Vector2(-218.00003, -39.06)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:etat_initial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["right", "dash_right", "right"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.74, 2),
+"transitions": PackedFloat32Array(1, 1, 0.5547847),
+"update": 0,
+"values": [Vector2(3.07, 3.07), Vector2(3.07, 3.07), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvpfn"]
+_data = {
+&"RESET": SubResource("Animation_0tnpc"),
+&"intro": SubResource("Animation_vtaks")
+}
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kvuet"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dinhu"]
@@ -913,20 +998,17 @@ layer_3/name = "Mid"
 layer_3/tile_data = PackedInt32Array(-589819, 2359296, 31, -524293, 2359296, 31, 131067, 2359296, 31, -589808, 2359296, 31, 65552, 2359296, 31, -589801, 2359296, 31, -589792, 2359296, 31, -589785, 2359296, 31, 65568, 2359296, 31, 65575, 2359296, 31, -589767, 2359296, 31, -589761, 2359296, 31, 65593, 2359296, 31, 65599, 2359296, 31, -589753, 2359296, 31, 65607, 2359296, 31, 327680, 589824, 31, 458750, 393216, 37, 393217, 589824, 25, -720898, 2424832, 4, -720896, 2818048, 4, -851967, 2490368, 10, -458738, 2818048, 6, -458742, 2818048, 6, -458731, 2818048, 6, -458720, 2818048, 6, -458713, 2818048, 6, -458697, 2818048, 6, -458701, 2818048, 6, 65556, 1769472, 28, 65563, 786432, 37, -393198, 2162688, 42, -393180, 2162688, 42, 65580, 1638400, 14, 65582, 2031616, 13, -393158, 1376257, 40, -196620, 589824, 31, -65546, 65537, 7, 65525, 1572865, 7)
 
 [node name="Actor" parent="." unique_id=1205379326 instance=ExtResource("7_u5sy4")]
-position = Vector2(-241, 0)
+position = Vector2(-482.265, -38)
 scale = Vector2(1.845, 1.845)
-max_speed = null
-acceleration = null
-friction = null
-dash_speed = null
-dash_duration = null
-dash_cooldown = null
-rotate_flag = null
+etat_initial = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="Actor" unique_id=815555575]
-position = Vector2(68.46588, 0)
+position = Vector2(68.46588, -19.479671)
 scale = Vector2(1.4166672, 1.4166672)
-zoom = Vector2(1.25, 1.25)
+zoom = Vector2(3.07, 3.07)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Actor" unique_id=1084550229]
+libraries/ = SubResource("AnimationLibrary_kvpfn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1911335453]
 material = SubResource("ShaderMaterial_oq8uu")
@@ -943,7 +1025,9 @@ material = SubResource("ShaderMaterial_oq8uu")
 anchors_preset = -1
 anchor_top = 0.002
 anchor_bottom = 0.002
-offset_left = -986.0
+offset_left = -1024.0
 offset_top = -1085.0
-offset_right = 3098.0
+offset_right = 3060.0
 offset_bottom = 758.0
+
+[connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

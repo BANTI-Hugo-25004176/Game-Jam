@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctp1yd7pgh7fr"]
 
-[ext_resource type="Script" uid="uid://dswpc0re4ft2t" path="res://scenes/player/Movement.gd" id="1_fpx7a"]
+[ext_resource type="Script" uid="uid://dswpc0re4ft2t" path="res://scenes/player/actor.gd" id="1_fpx7a"]
 [ext_resource type="Texture2D" uid="uid://bnprwsammoolu" path="res://assets/nico.png" id="2_ob2p3"]
 [ext_resource type="PackedScene" uid="uid://bvi1fwfiyttda" path="res://scenes/gun/gun.tscn" id="3_ob2p3"]
 
@@ -204,7 +204,7 @@ unique_name_in_owner = true
 position = Vector2(0, -1)
 scale = Vector2(0.31999952, 0.31999952)
 sprite_frames = SubResource("SpriteFrames_j8omb")
-animation = &"dash_down"
+animation = &"idle"
 
 [node name="Gun" parent="." unique_id=1670762173 instance=ExtResource("3_ob2p3")]
 position = Vector2(1, -6)
