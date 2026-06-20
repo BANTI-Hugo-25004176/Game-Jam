@@ -1,18 +1,36 @@
 extends Node2D
 
+const HUD_SCENE = preload("res://ui/hud/hud.tscn")
+
 @onready var animation_player = $Actor/AnimationPlayer
 @onready var player = $Actor
+@onready var gun = $Actor/Gun
 @onready var anim: AnimatedSprite2D = $Actor/BodyRotate/AnimatedSprite2D
 
+var _hud: GameHud
+
 func _ready():
+	Stats.reset()
+	_hud = HUD_SCENE.instantiate()
+	add_child(_hud)
 	jouer_cinematique()
-	
+
 func _process(_delta: float) -> void:
 	if animation_player.is_playing():
 		var nom_anim = player.etat_initial
 		if anim.animation != nom_anim:
 			anim.play(nom_anim)
-		
+	_maj_hud()
+
+## Alimente le HUD avec les données live (vie joueur + munitions du gun).
+func _maj_hud() -> void:
+	if _hud == null:
+		return
+	if is_instance_valid(player):
+		_hud.set_health(player.current_health, player.max_health)
+	if is_instance_valid(gun):
+		_hud.set_ammo(gun.ammo, gun.reloading)
+
 func jouer_cinematique():
 	animation_player.play("intro")
 	player.can_move = false

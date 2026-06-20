@@ -24,8 +24,15 @@ extends CanvasLayer
 @onready var _ammo_label:Label = %AmmoLabel
 @onready var _weapon_slots:HBoxContainer = %WeaponSlots
 @onready var _ammo_count:int = -1  # -1 = infinite
+var _reloading:bool = false
 
 func _ready()->void:
+	# Compteur de kills alimenté par l'autoload Stats (incrémenté à la mort d'un ennemi).
+	if Engine.has_singleton("Stats") or get_node_or_null("/root/Stats") != null:
+		var _stats:Node = get_node_or_null("/root/Stats")
+		if _stats != null:
+			_stats.kills_changed.connect(set_kills)
+			set_kills(_stats.kills)
 	_refresh()
 
 func _refresh()->void:
@@ -57,10 +64,12 @@ func set_weapons(names:Array, current:int)->void:
 	current_weapon = clampi(current, 0, 2)
 	_refresh_weapons()
 
-## Switch to finite ammo display (use when guns get limited ammo later).
-func set_ammo(count:int)->void:
+## Munitions : chargeur fini (count) sur réserve infinie → "count/∞".
+## `reloading` affiche un état de rechargement à la place du compteur.
+func set_ammo(count:int, reloading:bool = false)->void:
 	infinite_ammo = false
 	_ammo_count = max(0, count)
+	_reloading = reloading
 	_refresh_ammo()
 
 # --- Rendering ---
@@ -74,7 +83,12 @@ func _refresh_kills()->void:
 	_kills_label.text = str(kills)
 
 func _refresh_ammo()->void:
-	_ammo_label.text = "∞" if infinite_ammo else str(_ammo_count)
+	if infinite_ammo:
+		_ammo_label.text = "∞"
+	elif _reloading:
+		_ammo_label.text = "RECHARGE…"
+	else:
+		_ammo_label.text = "%d/∞" % _ammo_count
 
 func _refresh_weapons()->void:
 	var _slots:Array[Node] = _weapon_slots.get_children()

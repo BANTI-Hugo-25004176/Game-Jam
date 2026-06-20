@@ -51,7 +51,13 @@ func take_damage(amount: int) -> void:
 		die()
 func die() -> void:
 	print("Game Over : Le joueur est mort !")
-	queue_free()
+	# Bascule vers l'écran Game Over (via l'autoload UI), sinon repli direct.
+	get_tree().paused = false
+	var _ui: Node = get_node_or_null("/root/UI")
+	if _ui != null and _ui.has_method("change_scene"):
+		_ui.change_scene("res://ui/screens/game_over.tscn")
+	else:
+		get_tree().change_scene_to_file("res://ui/screens/game_over.tscn")
 func start_dash() -> void:
 	is_dashing = true
 	can_dash = false
