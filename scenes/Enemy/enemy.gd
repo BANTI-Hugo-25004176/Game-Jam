@@ -50,4 +50,5 @@ func take_damage(amount: int) -> void:
 	
 	if current_health <= 0:
 		print("L'ennemi est détruit !")
+		Stats.add_kill()
 		queue_free()
