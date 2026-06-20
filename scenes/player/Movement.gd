@@ -5,8 +5,8 @@ extends CharacterBody2D
 @export var acceleration: float = 1500.0
 @export var friction: float = 1200.0
 
-@export var dash_speed: float = 800.0
-@export var dash_duration: float = 0.15
+@export var dash_speed: float = 700.0
+@export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.5
 @export var rotate_flag: bool = true
 
@@ -24,9 +24,6 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		last_direction = input_dir.normalized()
 
-	if Input.is_action_just_pressed("dash") and can_dash:
-		start_dash()
-
 	if is_dashing:
 		velocity = last_direction * dash_speed
 	else:
@@ -41,18 +38,43 @@ func _physics_process(delta: float) -> void:
 func start_dash() -> void:
 	is_dashing = true
 	can_dash = false
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			anim.play("dash_right")
+			anim.flip_h = false
+		else:
+			anim.play("dash_left")
+	else:
+		if velocity.y > 0:
+			anim.play("dash_down")
+		else:
+			anim.play("dash_up")
+	
 	await get_tree().create_timer(dash_duration).timeout
 	is_dashing = false
+	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
 
 func update_animation() -> void:
-	if velocity.length() > 0:
-		anim.play("walk")
-		if velocity.x != 0:
-			anim.flip_h = velocity.x < 0
-	else:
-		anim.stop() 
+	if not is_dashing:
+		if velocity.length() > 0:
+			if Input.is_action_just_pressed("dash") and can_dash:
+				start_dash()
+				return
+			if abs(velocity.x) > abs(velocity.y):
+				if velocity.x > 0:
+					anim.play("right")
+					anim.flip_h = false
+				else:
+					anim.play("left") 
+			else:
+				if velocity.y > 0:
+					anim.play("down")
+				else:
+					anim.play("up")
+		else:
+			anim.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
