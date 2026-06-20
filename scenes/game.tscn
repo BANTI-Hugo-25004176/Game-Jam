@@ -1107,6 +1107,7 @@ etat_initial = "idle"
 position = Vector2(68.46588, -19.479671)
 scale = Vector2(1.4166672, 1.4166672)
 zoom = Vector2(3.07, 3.07)
+limit_bottom = 167
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actor" unique_id=1084550229]
 libraries/ = SubResource("AnimationLibrary_kvpfn")
@@ -1192,6 +1193,7 @@ shape = SubResource("RectangleShape2D_rysoc")
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D" unique_id=275408406]
 position = Vector2(2163, -254)
 shape = SubResource("RectangleShape2D_rysoc")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2098827314]
 material = SubResource("ShaderMaterial_kvpfn")
 anchors_preset = -1
