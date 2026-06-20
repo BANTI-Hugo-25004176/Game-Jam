@@ -3,7 +3,11 @@ extends CanvasLayer
 ## Pause overlay. The game adds this on the pause input to freeze the game and show
 ## the menu. Runs while the tree is paused (process_mode = Always, set in the scene).
 
+const OPTIONS_SCENE = preload("res://ui/screens/options.tscn")
+
 @onready var _menu:MenuScreen = %Menu
+
+var _options:Control = null
 
 func _ready()->void:
 	get_tree().paused = true
@@ -14,15 +18,36 @@ func _on_action(action:String)->void:
 		"resume":
 			get_tree().paused = false
 			queue_free()
+		"options":
+			_open_options()
 		"main_menu":
 			get_tree().paused = false
 			_go("res://ui/screens/main_menu.tscn")
 		"quit":
 			get_tree().quit()
-			
+
+## Ouvre les Options en superposition (la partie reste en pause dessous).
+func _open_options()->void:
+	if _options != null:
+		return
+	_menu.hide()
+	_options = OPTIONS_SCENE.instantiate()
+	_options.back_scene = ""  # mode superposition → "Retour" ferme sans changer de scène
+	_options.closed.connect(_on_options_closed)
+	add_child(_options)
+
+func _on_options_closed()->void:
+	_options = null
+	_menu.show()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		get_viewport().set_input_as_handled()
+		# Si les Options sont ouvertes, "pause" les referme d'abord.
+		if _options != null:
+			_options.queue_free()
+			_on_options_closed()
+			return
 		get_tree().paused = false
 		queue_free()
 
