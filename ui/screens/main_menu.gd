@@ -15,7 +15,7 @@ func _on_action(action:String)->void:
 			get_tree().quit()
 		"play":
 			print("[MainMenu] 'Play' pressed — wire this to the game scene when it exists.")
-			UI.change_scene("res://main.tscn")
+			UI.change_scene("res://scenes/game.tscn")
 		"options":
 			print("[MainMenu] 'Options' pressed — wire this to the Options screen.")
 		_:

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjt2t0bso8xsw" path="res://assets/sprites/Junkyard_1.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://yvmd0gda66c4" path="res://assets/sprites/RF_Catacombs_v1.0/decorative.png" id="5_vtaks"]
 [ext_resource type="Texture2D" uid="uid://kfodvil7n1xo" path="res://assets/sprites/RF_Catacombs_v1.0/mainlevbuild.png" id="6_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://ctp1yd7pgh7fr" path="res://addons/player/actor.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -810,7 +811,6 @@ sources/3 = SubResource("TileSetAtlasSource_ir15t")
 sources/4 = SubResource("TileSetAtlasSource_ca42v")
 sources/5 = SubResource("TileSetAtlasSource_rysoc")
 
-
 [node name="Game" type="Node2D" unique_id=368076374]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1008139937]
@@ -828,3 +828,9 @@ layer_2/tile_data = PackedInt32Array(-3, 2162691, 37, -65533, 2162691, 37, -7864
 layer_3/name = "Mid"
 layer_3/tile_data = PackedInt32Array(-589819, 2359296, 31, -524293, 2359296, 31, 131067, 2359296, 31, 65541, 2359296, 31, -589808, 2359296, 31, 65552, 2359296, 31, -589801, 2359296, 31, -589792, 2359296, 31, -589785, 2359296, 31, 65568, 2359296, 31, 65575, 2359296, 31, -589767, 2359296, 31, -589761, 2359296, 31, 65593, 2359296, 31, 65599, 2359296, 31, -589753, 2359296, 31, 65607, 2359296, 31, 327680, 589824, 31, 458750, 393216, 37, 393217, 589824, 25, -720898, 2424832, 4, -720896, 2818048, 4, -851967, 2490368, 10, -458738, 2818048, 6, -458742, 2818048, 6, -458731, 2818048, 6, -458720, 2818048, 6, -458713, 2818048, 6, -458697, 2818048, 6, -458701, 2818048, 6, 65546, 1245184, 25, 65556, 1769472, 28, 65563, 786432, 37, -393198, 2162688, 42, -393180, 2162688, 42, -327636, 0, 37, 65580, 1638400, 14, 65582, 2031616, 13, -393158, 1376257, 40, -196620, 589824, 31, -65546, 65537, 7, 65525, 1572865, 7)
 
+[node name="Actor" parent="." unique_id=1205379326 instance=ExtResource("7_u5sy4")]
+position = Vector2(-241, 0)
+scale = Vector2(3.5200014, 3.5200014)
+
+[node name="Camera2D" type="Camera2D" parent="Actor" unique_id=815555575]
+position = Vector2(68.46588, 0)
