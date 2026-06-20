@@ -1,0 +1,246 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_hud"]
+[ext_resource type="Theme" path="res://ui/theme/game_theme.tres" id="2_thm"]
+[ext_resource type="Shader" path="res://ui/hud/visor_vignette.gdshader" id="3_vig"]
+
+[sub_resource type="ShaderMaterial" id="vig_mat"]
+shader = ExtResource("3_vig")
+
+[sub_resource type="StyleBoxFlat" id="slab"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.08, 0.07, 0.06, 0.78)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.33, 0.12, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="hp_bg"]
+bg_color = Color(0.12, 0.06, 0.0, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.26, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="hp_fill"]
+bg_color = Color(1, 0.72, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="slot"]
+bg_color = Color(0.1, 0.09, 0.08, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.33, 0.12, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("vig_mat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="Root" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_thm")
+mouse_filter = 2
+
+[node name="KillsPanel" type="Panel" parent="Root"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 200.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("slab")
+
+[node name="HBox" type="HBoxContainer" parent="Root/KillsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Skull" type="Label" parent="Root/KillsPanel/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_font_sizes/font_size = 26
+text = "☠"
+
+[node name="KillsLabel" type="Label" parent="Root/KillsPanel/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 26
+text = "0"
+
+[node name="WeaponSlots" type="HBoxContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -176.0
+offset_right = 300.0
+offset_bottom = -120.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Slot1" type="Panel" parent="Root/WeaponSlots"]
+custom_minimum_size = Vector2(86, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("slot")
+
+[node name="Name" type="Label" parent="Root/WeaponSlots/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Pistolet"
+
+[node name="Slot2" type="Panel" parent="Root/WeaponSlots"]
+custom_minimum_size = Vector2(86, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("slot")
+
+[node name="Name" type="Label" parent="Root/WeaponSlots/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="Panel" parent="Root/WeaponSlots"]
+custom_minimum_size = Vector2(86, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("slot")
+
+[node name="Name" type="Label" parent="Root/WeaponSlots/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthPanel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -108.0
+offset_right = 360.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("slab")
+
+[node name="VBox" type="VBoxContainer" parent="Root/HealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Root/HealthPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "VIE"
+
+[node name="HealthBar" type="ProgressBar" parent="Root/HealthPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_styles/background = SubResource("hp_bg")
+theme_override_styles/fill = SubResource("hp_fill")
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="Root/HealthPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "100 / 100"
+
+[node name="AmmoPanel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -108.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("slab")
+
+[node name="VBox" type="VBoxContainer" parent="Root/AmmoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="Root/AmmoPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+text = "∞"
+
+[node name="Title" type="Label" parent="Root/AmmoPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "MUNITIONS"
