@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/hud/damage_flash.gd" id="1_df"]
+[ext_resource type="Shader" path="res://ui/hud/damage_flash.gdshader" id="2_sh"]
+
+[sub_resource type="ShaderMaterial" id="df_mat"]
+shader = ExtResource("2_sh")
+shader_parameter/amount = 0.0
+shader_parameter/inner = 0.35
+shader_parameter/outer = 0.78
+
+[node name="DamageFlash" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_df")
+
+[node name="Rect" type="ColorRect" parent="."]
+material = SubResource("df_mat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
