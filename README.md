@@ -25,6 +25,9 @@ Bienvenue sur le dépôt officiel de **Axel**, un jeu développé en un temps re
 ### Tester le jeu directement
 👉 **[Lien vers la page du jeu (Itch.io, Game Jolt, etc.)] (Bientôt)**
 
+### 📊 Suivre l'avancée du projet
+👉 **[Tableau de bord du projet](https://beghin-timothee-25011060.github.io/axel-dashboard/)** — statistiques et progression au fil du temps.
+
 ---
 
 ## 🛠️ Stack Technique & Outils
