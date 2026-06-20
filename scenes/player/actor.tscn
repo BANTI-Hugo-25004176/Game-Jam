@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ctp1yd7pgh7fr"]
 
-[ext_resource type="Script" uid="uid://dswpc0re4ft2t" path="res://addons/player/Movement.gd" id="1_fpx7a"]
+[ext_resource type="Script" uid="uid://dswpc0re4ft2t" path="res://scenes/player/Movement.gd" id="1_fpx7a"]
 [ext_resource type="Texture2D" uid="uid://dnw086nddtkr7" path="res://assets/plumber_16x16_strip.png" id="1_i104h"]
+[ext_resource type="PackedScene" uid="uid://bvi1fwfiyttda" path="res://scenes/gun/gun.tscn" id="3_ob2p3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i104h"]
 size = Vector2(11, 12.5)
@@ -70,7 +71,8 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_u5hhe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i104h"]
+size = Vector2(11, 15.5)
 
 [node name="Actor" type="CharacterBody2D" unique_id=1205379326]
 script = ExtResource("1_fpx7a")
@@ -78,20 +80,18 @@ script = ExtResource("1_fpx7a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=959965473]
 position = Vector2(0.5, -6.75)
 shape = SubResource("RectangleShape2D_i104h")
+[node name="BodyRotate" type="Polygon2D" parent="." unique_id=1839172937]
+position = Vector2(0, -6)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=819826571]
-position = Vector2(0, -8)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BodyRotate" unique_id=819826571]
+unique_name_in_owner = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_j8omb")
 animation = &"walk"
 
-[node name="Weapon" type="Node2D" parent="." unique_id=1775101035]
-unique_name_in_owner = true
-position = Vector2(7, -8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=959965473]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_i104h")
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=1697762610]
-position = Vector2(1.75, 0)
-scale = Vector2(4.5, 1)
-texture = SubResource("CanvasTexture_u5hhe")
-
-[node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1126108307]
-position = Vector2(4, 0)
+[node name="Gun" parent="." unique_id=1670762173 instance=ExtResource("3_ob2p3")]
+position = Vector2(1, -6)
