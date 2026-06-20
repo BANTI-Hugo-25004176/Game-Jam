@@ -11,7 +11,7 @@ func _ready():
 	
 	velocity = Vector2(SPEED, 0).rotated(dir)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	if get_slide_collision_count() > 0:
