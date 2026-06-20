@@ -13,3 +13,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	
+	if get_slide_collision_count() > 0:
+		queue_free()

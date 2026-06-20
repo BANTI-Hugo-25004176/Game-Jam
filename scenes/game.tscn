@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cjt2t0bso8xsw" path="res://assets/sprites/Junkyard_1.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://yvmd0gda66c4" path="res://assets/sprites/RF_Catacombs_v1.0/decorative.png" id="5_vtaks"]
 [ext_resource type="Texture2D" uid="uid://kfodvil7n1xo" path="res://assets/sprites/RF_Catacombs_v1.0/mainlevbuild.png" id="6_kvpfn"]
-[ext_resource type="Shader" uid="uid://uvwi4mmx7owm" path="res://shaders/fog.gdshader" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://ctp1yd7pgh7fr" path="res://scenes/player/actor.tscn" id="7_u5sy4"]
+[ext_resource type="Shader" uid="uid://uvwi4mmx7owm" path="res://shaders/fog.gdshader" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -912,7 +912,7 @@ layer_3/tile_data = PackedInt32Array(-589819, 2359296, 31, -524293, 2359296, 31,
 
 [node name="Actor" parent="." unique_id=1205379326 instance=ExtResource("7_u5sy4")]
 position = Vector2(-241, 0)
-scale = Vector2(3.5200014, 3.5200014)
+scale = Vector2(1.845, 1.845)
 max_speed = null
 acceleration = null
 friction = null
@@ -923,6 +923,8 @@ rotate_flag = null
 
 [node name="Camera2D" type="Camera2D" parent="Actor" unique_id=815555575]
 position = Vector2(68.46588, 0)
+scale = Vector2(1.4166672, 1.4166672)
+zoom = Vector2(1.25, 1.25)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1911335453]
 material = SubResource("ShaderMaterial_oq8uu")
