@@ -15,3 +15,6 @@ OPT_FULLSCREEN,Fullscreen,Plein écran
 OPT_LANGUAGE,Language,Langue
 OPT_BACK,Back,Retour
 MENU_ITEM,Item,Élément
+HUD_HEALTH,Health,Vie
+HUD_AMMO,Ammo,Munitions
+HUD_KILLS,Kills,Éliminations

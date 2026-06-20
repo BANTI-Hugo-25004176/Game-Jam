@@ -186,7 +186,7 @@ theme_override_constants/separation = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.6, 0.3, 1)
 theme_override_font_sizes/font_size = 14
-text = "VIE"
+text = "HUD_HEALTH"
 
 [node name="HealthBar" type="ProgressBar" parent="Root/HealthPanel/VBox"]
 unique_name_in_owner = true
@@ -243,4 +243,4 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.6, 0.3, 1)
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
-text = "MUNITIONS"
+text = "HUD_AMMO"
