@@ -1,11 +1,50 @@
 [gd_scene format=3 uid="uid://dlgmtcau57j4d"]
 
+[ext_resource type="Script" uid="uid://xy4r2vjscpqe" path="res://cinematique/scripts/game.gd" id="1_gee14"]
 [ext_resource type="Texture2D" uid="uid://coiwqwi0jgb6o" path="res://assets/sprites/DieselPunkSlums_1.png" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ctp1yd7pgh7fr" path="res://addons/player/actor.tscn" id="2_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bfcng8uypulr6" path="res://assets/sprites/DieselPunkSlums_2.png" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://daqtf73g7cnco" path="res://assets/sprites/Dieselpunk_Houses.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://cjt2t0bso8xsw" path="res://assets/sprites/Junkyard_1.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://yvmd0gda66c4" path="res://assets/sprites/RF_Catacombs_v1.0/decorative.png" id="5_vtaks"]
 [ext_resource type="Texture2D" uid="uid://kfodvil7n1xo" path="res://assets/sprites/RF_Catacombs_v1.0/mainlevbuild.png" id="6_kvpfn"]
+
+[sub_resource type="Animation" id="Animation_vtaks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-597, -43)]
+}
+
+[sub_resource type="Animation" id="Animation_kvpfn"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-597, -43), Vector2(-397, -40), Vector2(-318, -85), Vector2(-247, -45)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dinhu"]
+_data = {
+&"RESET": SubResource("Animation_vtaks"),
+&"intro": SubResource("Animation_kvpfn")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -810,8 +849,23 @@ sources/3 = SubResource("TileSetAtlasSource_ir15t")
 sources/4 = SubResource("TileSetAtlasSource_ca42v")
 sources/5 = SubResource("TileSetAtlasSource_rysoc")
 
-
 [node name="Game" type="Node2D" unique_id=368076374]
+script = ExtResource("1_gee14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267871673]
+root_node = NodePath("../Actor")
+libraries/ = SubResource("AnimationLibrary_dinhu")
+
+[node name="Actor" parent="." unique_id=1205379326 instance=ExtResource("2_0tnpc")]
+z_index = 500
+position = Vector2(-597, -43)
+scale = Vector2(1.8, 1.8)
+
+[node name="Camera2D" type="Camera2D" parent="Actor" unique_id=1196617926]
+z_index = 20
+position = Vector2(1, -0.5)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1008139937]
 tile_set = SubResource("TileSet_usmdp")
@@ -827,4 +881,3 @@ layer_2/modulate = Color(0.46666667, 0.46666667, 0.46666667, 1)
 layer_2/tile_data = PackedInt32Array(-3, 2162691, 37, -65533, 2162691, 37, -786427, 983042, 0, -655352, 1638402, 23, -655365, 1048578, 19, -720884, 2, 33, -720877, 2162690, 0, -655336, 1572866, 0, -786437, 1572866, 0, -983035, 1572866, 0, -655330, 983042, 36, -655319, 983042, 36, -655307, 2, 19, -720836, 2162690, 0, -655295, 1572866, 0, -655291, 983042, 0, -720863, 2752513, 25, -720858, 2752513, 25, -589781, 1179649, 13, -720847, 2752513, 25, 87, 196613, 2, -196521, 196613, 2, -393129, 196613, 2, -720822, 2, 19, -1376169, 1638402, 23, -1441702, 983042, 36, 131159, 983042, 36, 327769, 1572866, 36, 458844, 983042, 0, -524298, 2, 0, -524305, 2162690, 0)
 layer_3/name = "Mid"
 layer_3/tile_data = PackedInt32Array(-589819, 2359296, 31, -524293, 2359296, 31, 131067, 2359296, 31, 65541, 2359296, 31, -589808, 2359296, 31, 65552, 2359296, 31, -589801, 2359296, 31, -589792, 2359296, 31, -589785, 2359296, 31, 65568, 2359296, 31, 65575, 2359296, 31, -589767, 2359296, 31, -589761, 2359296, 31, 65593, 2359296, 31, 65599, 2359296, 31, -589753, 2359296, 31, 65607, 2359296, 31, 327680, 589824, 31, 458750, 393216, 37, 393217, 589824, 25, -720898, 2424832, 4, -720896, 2818048, 4, -851967, 2490368, 10, -458738, 2818048, 6, -458742, 2818048, 6, -458731, 2818048, 6, -458720, 2818048, 6, -458713, 2818048, 6, -458697, 2818048, 6, -458701, 2818048, 6, 65546, 1245184, 25, 65556, 1769472, 28, 65563, 786432, 37, -393198, 2162688, 42, -393180, 2162688, 42, -327636, 0, 37, 65580, 1638400, 14, 65582, 2031616, 13, -393158, 1376257, 40, -196620, 589824, 31, -65546, 65537, 7, 65525, 1572865, 7)
-

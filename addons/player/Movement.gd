@@ -18,6 +18,7 @@ signal shoot_fired(pos: Vector2, dir: Vector2)
 var is_dashing: bool = false
 var can_dash: bool = true
 var last_direction: Vector2 = Vector2.RIGHT
+var controles_actifs = true
 
 const PAUSE_MENU = preload("res://ui/screens/pause.tscn")
 
@@ -26,6 +27,8 @@ const PAUSE_MENU = preload("res://ui/screens/pause.tscn")
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+	if not controles_actifs:
+		return 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if input_dir != Vector2.ZERO:
@@ -51,7 +54,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		fire()
 	
-
+func jouer_animation(nom: String) -> void:
+	$AnimatedSprite2D.play(nom)
 
 func start_dash() -> void:
 	is_dashing = true
@@ -76,6 +80,8 @@ func update_animation() -> void:
 	elif velocity.length() > 0:
 		# velocity.length() > 0 signifie que le personnage bouge (peu importe la direction)
 		anim.play("walk")
+	else: 
+		anim.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
