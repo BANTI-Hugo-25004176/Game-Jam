@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/hud/boss_bar.gd" id="1_bb"]
+[ext_resource type="Theme" path="res://ui/theme/game_theme.tres" id="2_thm"]
+
+[sub_resource type="StyleBoxFlat" id="slab"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.07, 0.06, 0.82)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.33, 0.12, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="bar_bg"]
+bg_color = Color(0.1, 0.04, 0.03, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.26, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="bar_fill"]
+bg_color = Color(0.82, 0.16, 0.1, 1)
+
+[node name="BossBar" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_bb")
+
+[node name="Root" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_thm")
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 24.0
+offset_right = 360.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("slab")
+
+[node name="VBox" type="VBoxContainer" parent="Root/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="BossName" type="Label" parent="Root/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.35, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "MINIBOSS"
+
+[node name="BossBar" type="ProgressBar" parent="Root/Panel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_styles/background = SubResource("bar_bg")
+theme_override_styles/fill = SubResource("bar_fill")
+max_value = 100.0
+value = 100.0
+show_percentage = false
