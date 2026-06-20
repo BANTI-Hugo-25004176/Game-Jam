@@ -4,12 +4,18 @@ extends CharacterBody2D
 var bullet_path = preload("res://scenes/bullet/bullet.tscn")
 var ammo = 30
 var reloading = false
+var cadence_de_tir : float = 7.0
+var delai_entre_tirs : float = 1.0 / cadence_de_tir # Donne 0.2 seconde
+var temps_depuis_dernier_tir : float = 0.0
 @onready var timer: Timer = $Timer
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("shoot"):
+	temps_depuis_dernier_tir += delta
+	
+	if Input.is_action_pressed("shoot") and temps_depuis_dernier_tir >= delai_entre_tirs:
 		fire()
+		temps_depuis_dernier_tir = 0.0
 	
 	look_at(get_global_mouse_position())
 	
