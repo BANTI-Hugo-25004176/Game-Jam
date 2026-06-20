@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var acceleration: float = 1500.0
 @export var friction: float = 1200.0
 
+@export var max_health: int = 100
+var current_health: int
+
 @export var dash_speed: float = 450.0
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.5
@@ -38,6 +41,17 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		update_animation()
 
+func _ready() -> void:
+	current_health = max_health
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	print("Le joueur a pris ", amount, " dégâts ! Santé restante : ", current_health)
+	
+	if current_health <= 0:
+		die()
+func die() -> void:
+	print("Game Over : Le joueur est mort !")
+	queue_free()
 func start_dash() -> void:
 	is_dashing = true
 	can_dash = false

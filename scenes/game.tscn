@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ctp1yd7pgh7fr" path="res://scenes/player/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cg73h076bhqd1" path="res://scenes/world/light.tscn" id="8_0tnpc"]
 [ext_resource type="Shader" uid="uid://uvwi4mmx7owm" path="res://shaders/fog.gdshader" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://scenes/Enemy/Enemy.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -1030,6 +1031,7 @@ shader_parameter/density = 0.8
 script = ExtResource("1_0tnpc")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1008139937]
+position = Vector2(1, 6)
 tile_set = SubResource("TileSet_usmdp")
 collision_animatable = true
 format = 2
@@ -1214,5 +1216,8 @@ offset_left = -1024.0
 offset_top = -1085.0
 offset_right = 3060.0
 offset_bottom = 758.0
+
+[node name="Enemy" parent="." unique_id=1131615112 instance=ExtResource("9_0tnpc")]
+position = Vector2(322, -49)
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
