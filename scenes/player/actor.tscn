@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bvi1fwfiyttda" path="res://scenes/gun/gun.tscn" id="3_ob2p3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i104h"]
-size = Vector2(11, 15.5)
+size = Vector2(7, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4ul1"]
 atlas = ExtResource("2_ob2p3")
@@ -193,7 +193,7 @@ animations = [{
 script = ExtResource("1_fpx7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=959965473]
-position = Vector2(0.5, -6.75)
+position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_i104h")
 
 [node name="BodyRotate" type="Polygon2D" parent="." unique_id=1839172937]
@@ -205,10 +205,6 @@ position = Vector2(0, -1)
 scale = Vector2(0.31999952, 0.31999952)
 sprite_frames = SubResource("SpriteFrames_j8omb")
 animation = &"dash_down"
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=277979581]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_i104h")
 
 [node name="Gun" parent="." unique_id=1670762173 instance=ExtResource("3_ob2p3")]
 position = Vector2(1, -6)
