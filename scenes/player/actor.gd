@@ -22,6 +22,8 @@ var is_dashing: bool = false
 var can_dash: bool = true
 var last_direction: Vector2 = Vector2.RIGHT
 var can_move = true
+var step_interval := 0.3
+var step_timer := 0.0
 
 func _physics_process(delta: float) -> void:
 	if can_move:
@@ -31,9 +33,15 @@ func _physics_process(delta: float) -> void:
 			last_direction = input_dir.normalized()
 
 		if is_dashing:
+			if not $dashsound.playing:
+				$dashsound.play()
 			velocity = last_direction * dash_speed
 		else:
 			if input_dir != Vector2.ZERO:
+				step_timer -= delta
+				if step_timer <= 0.0:
+					$footstep.play()
+					step_timer = step_interval
 				velocity = velocity.move_toward(input_dir * max_speed, acceleration * delta)
 			else:
 				velocity = velocity.move_toward(Vector2.ZERO, friction * delta)

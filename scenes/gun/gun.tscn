@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ugddrsii8itt" path="res://scenes/gun/gun.gd" id="1_csbbp"]
 [ext_resource type="Texture2D" uid="uid://dkgjr1pty5ujv" path="res://assets/gun.png" id="2_fjnj2"]
+[ext_resource type="AudioStream" uid="uid://dmq0sir1q67sc" path="res://assets/SFX/tir.wav" id="3_eo2c1"]
 
 [node name="Gun" type="CharacterBody2D" unique_id=1670762173]
 script = ExtResource("1_csbbp")
@@ -17,5 +18,8 @@ position = Vector2(16, 0)
 position = Vector2(10.000001, 1.4210855e-14)
 scale = Vector2(0.53749996, 0.4875)
 texture = ExtResource("2_fjnj2")
+
+[node name="shootsound" type="AudioStreamPlayer2D" parent="." unique_id=306915893]
+stream = ExtResource("3_eo2c1")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
