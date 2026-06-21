@@ -65,6 +65,6 @@ func _refresh_ammo() -> void:
 	if infinite_ammo:
 		_ammo_label.text = "∞"
 	elif _reloading:
-		_ammo_label.text = "RECHARGE…"
+		_ammo_label.text = tr("HUD_RELOADING")
 	else:
 		_ammo_label.text = "%d/∞" % _ammo_count
