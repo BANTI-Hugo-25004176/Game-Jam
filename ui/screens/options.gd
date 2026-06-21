@@ -13,10 +13,15 @@ signal closed
 
 @export_file("*.tscn") var back_scene:String = "res://ui/screens/main_menu.tscn"
 
+const CONTROLS_SCENE := preload("res://ui/screens/controls.tscn")
+
 @onready var _volume:HSlider = %VolumeSlider
 @onready var _fullscreen:CheckButton = %FullscreenCheck
 @onready var _language:OptionButton = %LanguageOption
+@onready var _controls_btn:Button = %ControlsButton
 @onready var _back:Button = %BackButton
+
+var _controls:Control = null
 
 func _ready()->void:
 	var _bus:int = AudioServer.get_bus_index("Master")
@@ -33,8 +38,21 @@ func _ready()->void:
 	_language.selected = 1 if TranslationServer.get_locale().begins_with("en") else 0
 	_language.item_selected.connect(_on_language_selected)
 
+	_controls_btn.pressed.connect(_open_controls)
 	_back.pressed.connect(_on_back)
 	_back.grab_focus.call_deferred()
+
+## Ouvre l'écran Contrôles en superposition (revient ici à la fermeture).
+func _open_controls()->void:
+	if _controls != null:
+		return
+	_controls = CONTROLS_SCENE.instantiate()
+	_controls.back_scene = ""  # mode superposition → "Retour" ferme et revient ici
+	_controls.closed.connect(_on_controls_closed)
+	add_child(_controls)
+
+func _on_controls_closed()->void:
+	_controls = null
 
 func _on_volume_changed(value:float)->void:
 	var _bus:int = AudioServer.get_bus_index("Master")

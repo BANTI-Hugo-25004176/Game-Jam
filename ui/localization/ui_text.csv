@@ -18,3 +18,16 @@ MENU_ITEM,Item,Élément
 HUD_HEALTH,Health,Vie
 HUD_AMMO,Ammo,Munitions
 HUD_KILLS,Kills,Éliminations
+OPT_CONTROLS,Controls,Contrôles
+CTRL_TITLE,Controls,Contrôles
+CTRL_KEYBOARD,Keyboard,Clavier
+CTRL_CONTROLLER,Controller,Manette
+CTRL_SENSITIVITY,Aim sensitivity,Sensibilité visée
+CTRL_RESET,Reset,Réinitialiser
+CTRL_UP,Move up,Avancer
+CTRL_DOWN,Move down,Reculer
+CTRL_LEFT,Move left,Gauche
+CTRL_RIGHT,Move right,Droite
+CTRL_DASH,Dash,Dash
+CTRL_SHOOT,Shoot,Tirer
+CTRL_PAUSE,Pause,Pause
