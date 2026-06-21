@@ -119,10 +119,20 @@ func display_label(action: String, kind: String) -> String:
 	if ev == null:
 		return "—"
 	if ev is InputEventKey:
-		var code: int = ev.physical_keycode if ev.physical_keycode != 0 else ev.keycode
-		return OS.get_keycode_string(code)
+		return key_label(ev)
 	if ev is InputEventJoypadButton:
 		return "Bouton %d" % ev.button_index
 	if ev is InputEventJoypadMotion:
 		return "Axe %d %s" % [ev.axis, "+" if ev.axis_value > 0.0 else "-"]
 	return "?"
+
+## Libellé d'une touche adapté à la disposition clavier réelle (AZERTY/QWERTY) :
+## une touche physique est traduite en son étiquette locale (ex. physique W → "Z"
+## sur AZERTY). Repli sur le nom brut si la disposition est indisponible (headless).
+func key_label(ev: InputEventKey) -> String:
+	if ev.physical_keycode != 0:
+		var lbl: int = DisplayServer.keyboard_get_label_from_physical(ev.physical_keycode)
+		if lbl != 0:
+			return OS.get_keycode_string(lbl)
+		return OS.get_keycode_string(ev.physical_keycode)
+	return OS.get_keycode_string(ev.keycode)

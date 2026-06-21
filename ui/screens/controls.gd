@@ -68,8 +68,7 @@ func _event_text(ev: InputEvent) -> String:
 	if ev == null:
 		return "—"
 	if ev is InputEventKey:
-		var code: int = ev.physical_keycode if ev.physical_keycode != 0 else ev.keycode
-		return OS.get_keycode_string(code)
+		return InputConfig.key_label(ev)
 	if ev is InputEventJoypadButton:
 		return "Bouton %d" % ev.button_index
 	if ev is InputEventJoypadMotion:
