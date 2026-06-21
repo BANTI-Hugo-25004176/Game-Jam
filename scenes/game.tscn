@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://scenes/enemy_melee/enemy_melee.tscn" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://e1hxi6pjh2ur" path="res://assets/SFX/axel.mp3" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b7y8336d14ekd" path="res://scenes/enemy_gun/enemy_gun.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bb0ssaxel4700" path="res://scenes/boss/boss.tscn" id="14_boss"]
+[ext_resource type="PackedScene" uid="uid://bh0leaxel4700" path="res://scenes/exit_hole/exit_hole.tscn" id="15_hole"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -1317,5 +1319,11 @@ position = Vector2(2152, 74)
 
 [node name="Enemy9" parent="enemies" unique_id=227641530 instance=ExtResource("13_kvuet")]
 position = Vector2(880, 99)
+
+[node name="Boss" parent="." instance=ExtResource("14_boss")]
+position = Vector2(2150, 0)
+
+[node name="ExitHole" parent="." instance=ExtResource("15_hole")]
+position = Vector2(2380, 0)
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

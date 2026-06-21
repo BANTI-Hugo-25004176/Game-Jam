@@ -16,6 +16,12 @@ func _ready():
 	jouer_cinematique()
 	$AudioStreamPlayer2D.play()
 
+	# Fin de démo : à la mort du boss, on ouvre le trou de sortie.
+	var _boss := get_node_or_null("Boss")
+	var _hole := get_node_or_null("ExitHole")
+	if _boss != null and _hole != null and _boss.has_signal("died"):
+		_boss.died.connect(_hole.activate)
+
 func _process(_delta: float) -> void:
 	if animation_player.is_playing():
 		var nom_anim = player.etat_initial
