@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- STATISTIQUES ---
-@export var max_speed: float = 300.0
+@export var max_speed: float = 150.0
 @export var acceleration: float = 1500.0
 @export var friction: float = 1200.0
 
