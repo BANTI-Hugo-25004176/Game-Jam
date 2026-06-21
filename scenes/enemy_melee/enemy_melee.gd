@@ -4,8 +4,8 @@ enum State { IDLE, CHASE }
 var current_state : State = State.IDLE
 
 @export var speed : float = 75.0
-@export var attack_damage : int = 10 
-@export var max_health : int = 30
+@export var attack_damage : int = 30 
+@export var max_health : int = 70
 
 var atk_cool = 1.0
 var atk_timer = 1.0

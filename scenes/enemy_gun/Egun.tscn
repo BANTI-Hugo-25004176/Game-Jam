@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://5dfibehm2r6e"]
+
+[ext_resource type="Texture2D" uid="uid://dkgjr1pty5ujv" path="res://assets/gun.png" id="1_208o6"]
+[ext_resource type="Script" uid="uid://bbb5gsc3eo1fb" path="res://scenes/enemy_gun/egun.gd" id="1_j06kx"]
+[ext_resource type="AudioStream" uid="uid://dmq0sir1q67sc" path="res://assets/SFX/tir.wav" id="2_j06kx"]
+
+[node name="Egun" type="CharacterBody2D" unique_id=866096194]
+script = ExtResource("1_j06kx")
+
+[node name="Timer" type="Timer" parent="." unique_id=1181368954]
+wait_time = 2.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1799362722]
+position = Vector2(16, 0)
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=1848569726]
+position = Vector2(10.000001, 1.4210855e-14)
+scale = Vector2(0.53749996, 0.4875)
+texture = ExtResource("1_208o6")
+
+[node name="shootsound" type="AudioStreamPlayer2D" parent="." unique_id=305740210]
+stream = ExtResource("2_j06kx")
