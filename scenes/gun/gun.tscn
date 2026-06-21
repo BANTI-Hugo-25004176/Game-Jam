@@ -7,7 +7,7 @@
 script = ExtResource("1_csbbp")
 
 [node name="Timer" type="Timer" parent="." unique_id=140182477]
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1618925298]
