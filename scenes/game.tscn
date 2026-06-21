@@ -1320,10 +1320,10 @@ position = Vector2(2152, 74)
 [node name="Enemy9" parent="enemies" unique_id=227641530 instance=ExtResource("13_kvuet")]
 position = Vector2(880, 99)
 
-[node name="Boss" parent="." instance=ExtResource("14_boss")]
-position = Vector2(2150, 0)
+[node name="Boss" parent="." unique_id=791744216 instance=ExtResource("14_boss")]
+position = Vector2(2538, -40)
 
-[node name="ExitHole" parent="." instance=ExtResource("15_hole")]
-position = Vector2(2380, 0)
+[node name="ExitHole" parent="." unique_id=1696575723 instance=ExtResource("15_hole")]
+position = Vector2(2609, -41)
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
