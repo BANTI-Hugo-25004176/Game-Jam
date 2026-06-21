@@ -1,6 +1,7 @@
 extends Node2D
 
 const HUD_SCENE = preload("res://ui/hud/hud.tscn")
+const BOSS_BAR_SCENE = preload("res://ui/hud/boss_bar.tscn")
 
 @onready var animation_player = $Actor/AnimationPlayer
 @onready var player = $Actor
@@ -16,11 +17,20 @@ func _ready():
 	jouer_cinematique()
 	$AudioStreamPlayer2D.play()
 
-	# Fin de démo : à la mort du boss, on ouvre le trou de sortie.
+	# Boss : barre de vie (apparaît au combat) + ouverture du trou à sa mort.
 	var _boss := get_node_or_null("Boss")
 	var _hole := get_node_or_null("ExitHole")
-	if _boss != null and _hole != null and _boss.has_signal("died"):
-		_boss.died.connect(_hole.activate)
+	if _boss != null:
+		var _boss_bar := BOSS_BAR_SCENE.instantiate()
+		add_child(_boss_bar)
+		if _boss.has_signal("engaged"):
+			_boss.engaged.connect(_boss_bar.show_boss)
+		if _boss.has_signal("health_changed"):
+			_boss.health_changed.connect(_boss_bar.set_health)
+		if _boss.has_signal("died"):
+			_boss.died.connect(_boss_bar.hide_boss)
+			if _hole != null:
+				_boss.died.connect(_hole.activate)
 
 func _process(_delta: float) -> void:
 	if animation_player.is_playing():
