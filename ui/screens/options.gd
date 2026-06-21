@@ -20,6 +20,7 @@ const CONTROLS_SCENE := preload("res://ui/screens/controls.tscn")
 @onready var _language:OptionButton = %LanguageOption
 @onready var _controls_btn:Button = %ControlsButton
 @onready var _back:Button = %BackButton
+@onready var _center:Control = $Center
 
 var _controls:Control = null
 
@@ -46,6 +47,7 @@ func _ready()->void:
 func _open_controls()->void:
 	if _controls != null:
 		return
+	_center.hide()  # masque les options derrière → plus de navigation parasite
 	_controls = CONTROLS_SCENE.instantiate()
 	_controls.back_scene = ""  # mode superposition → "Retour" ferme et revient ici
 	_controls.closed.connect(_on_controls_closed)
@@ -53,6 +55,16 @@ func _open_controls()->void:
 
 func _on_controls_closed()->void:
 	_controls = null
+	_center.show()
+	_controls_btn.grab_focus()  # rend le focus pour continuer à naviguer
+
+## Échap / B (manette) = retour (sauf si l'écran Contrôles est ouvert : il gère lui-même).
+func _unhandled_input(event:InputEvent)->void:
+	if _controls != null:
+		return
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		_on_back()
 
 func _on_volume_changed(value:float)->void:
 	var _bus:int = AudioServer.get_bus_index("Master")

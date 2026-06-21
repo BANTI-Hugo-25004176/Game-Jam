@@ -48,6 +48,14 @@ func rebuild()->void:
 	if _first != null:
 		_first.grab_focus.call_deferred()
 
+## Redonne le focus au premier bouton (ex. après fermeture d'une superposition,
+## pour pouvoir continuer à naviguer au clavier/manette).
+func grab_first_focus()->void:
+	for _child:Node in _buttons.get_children():
+		if _child is Button:
+			(_child as Button).grab_focus()
+			return
+
 func _on_pressed(item:MenuItem)->void:
 	if item.target_scene != "":
 		_change_scene(item.target_scene)

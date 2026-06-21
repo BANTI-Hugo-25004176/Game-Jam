@@ -39,17 +39,20 @@ func _open_options()->void:
 func _on_options_closed()->void:
 	_options = null
 	_menu.show()
+	_menu.grab_first_focus()  # rend le focus pour continuer à naviguer
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		get_viewport().set_input_as_handled()
-		# Si les Options sont ouvertes, "pause" les referme d'abord.
-		if _options != null:
-			_options.queue_free()
-			_on_options_closed()
-			return
-		get_tree().paused = false
-		queue_free()
+	# "Pause" (Échap/Start) ou "ui_cancel" (Échap/B) = revenir en arrière.
+	if not (event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel")):
+		return
+	get_viewport().set_input_as_handled()
+	# Si les Options sont ouvertes, on les referme d'abord.
+	if _options != null:
+		_options.queue_free()
+		_on_options_closed()
+		return
+	get_tree().paused = false
+	queue_free()
 
 func _go(path:String)->void:
 	var _ui:Node = get_node_or_null("/root/UI")

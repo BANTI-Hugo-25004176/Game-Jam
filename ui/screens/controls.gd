@@ -30,10 +30,10 @@ var _rows: Dictionary = {}  # action -> {"key": Button, "pad": Button}
 
 func _ready() -> void:
 	_build_rows()
-	_sens.min_value = 0.05
-	_sens.max_value = 0.6
-	_sens.step = 0.05
-	_sens.value = InputConfig.aim_deadzone
+	_sens.min_value = 2.0
+	_sens.max_value = 20.0
+	_sens.step = 1.0
+	_sens.value = InputConfig.aim_sensitivity
 	_sens.value_changed.connect(_on_sens_changed)
 	_reset.pressed.connect(_on_reset)
 	_back.pressed.connect(_on_back)
@@ -86,6 +86,17 @@ func _start_listen(action: String, kind: String) -> void:
 
 func _input(event: InputEvent) -> void:
 	if _listening_action == "":
+		# Pas en écoute : Échap / B (manette) = retour.
+		if event.is_action_pressed("ui_cancel"):
+			get_viewport().set_input_as_handled()
+			_on_back()
+		return
+	# En écoute : Échap / B annule la réassignation (sans rien lier).
+	if event.is_action_pressed("ui_cancel"):
+		_listening_action = ""
+		_listening_kind = ""
+		_refresh_labels()
+		get_viewport().set_input_as_handled()
 		return
 	var new_ev: InputEvent = null
 	if _listening_kind == "key" and event is InputEventKey and event.pressed and not event.echo:
@@ -111,12 +122,12 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_sens_changed(value: float) -> void:
-	InputConfig.aim_deadzone = value
+	InputConfig.aim_sensitivity = value
 	InputConfig.save_config()
 
 func _on_reset() -> void:
 	InputConfig.reset_defaults()
-	_sens.value = InputConfig.aim_deadzone
+	_sens.value = InputConfig.aim_sensitivity
 	_refresh_labels()
 
 func _on_back() -> void:
