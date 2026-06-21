@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cuqdk8xovcekj" path="res://scenes/enemy_gun/enemy_gun.gd" id="1_yg73y"]
 [ext_resource type="Texture2D" uid="uid://d1af7njpo3iwc" path="res://assets/sprites/soldat3.png" id="2_h75ht"]
+[ext_resource type="PackedScene" uid="uid://5dfibehm2r6e" path="res://scenes/enemy_gun/Egun.tscn" id="3_ot0gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpfn"]
 size = Vector2(12, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjdcl"]
-radius = 159.68596
+radius = 394.66064
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xu144"]
 atlas = ExtResource("2_h75ht")
@@ -146,6 +147,9 @@ position = Vector2(1.1600056, -2.0800056)
 scale = Vector2(0.36833307, 0.36408135)
 sprite_frames = SubResource("SpriteFrames_ftuji")
 animation = &"down"
+
+[node name="Egun" parent="." unique_id=866096194 instance=ExtResource("3_ot0gv")]
+position = Vector2(1, -5)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
