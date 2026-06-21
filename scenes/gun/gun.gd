@@ -50,7 +50,7 @@ func fire():
 	if !reloading:
 		
 		var bullet = bullet_path.instantiate()
-	
+		$shootsound.play()
 		bullet.pos = $Marker2D.global_position
 		bullet.rota = global_rotation
 		bullet.dir = global_rotation
