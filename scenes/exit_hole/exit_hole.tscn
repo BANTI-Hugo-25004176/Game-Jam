@@ -1,20 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh0leaxel4700"]
+[gd_scene format=3 uid="uid://bh0leaxel4700"]
 
-[ext_resource type="Script" path="res://scenes/exit_hole/exit_hole.gd" id="1_hole"]
+[ext_resource type="Script" uid="uid://da8ldwcs8ve2n" path="res://scenes/exit_hole/exit_hole.gd" id="1_hole"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hole"]
-radius = 36.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv38g"]
+size = Vector2(87.5, 83)
 
-[node name="ExitHole" type="Area2D"]
+[node name="ExitHole" type="Area2D" unique_id=2070795403]
 script = ExtResource("1_hole")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hole")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85937585]
+shape = SubResource("RectangleShape2D_rv38g")
 
-[node name="Ring" type="Polygon2D" parent="."]
-color = Color(0.45, 0.7, 1, 0.55)
-polygon = PackedVector2Array(0, -44, 31, -31, 44, 0, 31, 31, 0, 44, -31, 31, -44, 0, -31, -31)
-
-[node name="Visual" type="Polygon2D" parent="."]
-color = Color(0.02, 0.02, 0.05, 1)
-polygon = PackedVector2Array(0, -38, 27, -27, 38, 0, 27, 27, 0, 38, -27, 27, -38, 0, -27, -27)
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=203240366]
+position = Vector2(9, 15)
+color = Color(1, 0.65882355, 0.11764706, 0.3372549)
+polygon = PackedVector2Array(35, 27, 35, -56, -53, -56, -53, 27)
