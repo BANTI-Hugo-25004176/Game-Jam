@@ -1219,14 +1219,103 @@ offset_top = -1085.0
 offset_right = 3060.0
 offset_bottom = 758.0
 
-[node name="Enemy" parent="." unique_id=1131615112 instance=ExtResource("9_0tnpc")]
-position = Vector2(322, -50)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1714721191]
 stream = ExtResource("12_dinhu")
 parameters/looping = true
 
-[node name="Enemy2" parent="." unique_id=614123132 instance=ExtResource("13_kvuet")]
-position = Vector2(412, 76)
+[node name="enemies" type="Node" parent="." unique_id=402666969]
+
+[node name="Enemy" parent="enemies" unique_id=1131615112 instance=ExtResource("9_0tnpc")]
+position = Vector2(332, -126)
+
+[node name="Enemy4" parent="enemies" unique_id=1198996677 instance=ExtResource("9_0tnpc")]
+position = Vector2(850, -195)
+
+[node name="Enemy5" parent="enemies" unique_id=1954164608 instance=ExtResource("9_0tnpc")]
+position = Vector2(914, -194)
+
+[node name="Enemy7" parent="enemies" unique_id=403795643 instance=ExtResource("9_0tnpc")]
+position = Vector2(839, 125)
+
+[node name="Enemy8" parent="enemies" unique_id=444010164 instance=ExtResource("9_0tnpc")]
+position = Vector2(933, 127)
+
+[node name="Enemy10" parent="enemies" unique_id=1088301977 instance=ExtResource("9_0tnpc")]
+position = Vector2(1114, -208)
+
+[node name="Enemy11" parent="enemies" unique_id=458732037 instance=ExtResource("9_0tnpc")]
+position = Vector2(1186, -208)
+
+[node name="Enemy12" parent="enemies" unique_id=64993997 instance=ExtResource("9_0tnpc")]
+position = Vector2(1217, 129)
+
+[node name="Enemy16" parent="enemies" unique_id=1818067380 instance=ExtResource("9_0tnpc")]
+position = Vector2(1531, 123)
+
+[node name="Enemy19" parent="enemies" unique_id=1150483138 instance=ExtResource("9_0tnpc")]
+position = Vector2(1430, -209)
+
+[node name="Enemy18" parent="enemies" unique_id=418732308 instance=ExtResource("9_0tnpc")]
+position = Vector2(1542, -215)
+
+[node name="Enemy17" parent="enemies" unique_id=972842567 instance=ExtResource("9_0tnpc")]
+position = Vector2(1403, 126)
+
+[node name="Enemy13" parent="enemies" unique_id=1322647886 instance=ExtResource("9_0tnpc")]
+position = Vector2(1131, 124)
+
+[node name="Enemy3" parent="enemies" unique_id=125232449 instance=ExtResource("9_0tnpc")]
+position = Vector2(338, 62)
+
+[node name="Enemy29" parent="enemies" unique_id=1799976256 instance=ExtResource("9_0tnpc")]
+position = Vector2(1835, 58)
+
+[node name="Enemy30" parent="enemies" unique_id=134459154 instance=ExtResource("9_0tnpc")]
+position = Vector2(1792, -28)
+
+[node name="Enemy31" parent="enemies" unique_id=1818107098 instance=ExtResource("9_0tnpc")]
+position = Vector2(1840, -148)
+
+[node name="Enemy2" parent="enemies" unique_id=614123132 instance=ExtResource("13_kvuet")]
+position = Vector2(682, -31)
+
+[node name="Enemy6" parent="enemies" unique_id=1537366276 instance=ExtResource("13_kvuet")]
+position = Vector2(883, -222)
+
+[node name="Enemy15" parent="enemies" unique_id=1132737547 instance=ExtResource("13_kvuet")]
+position = Vector2(1172, 103)
+
+[node name="Enemy14" parent="enemies" unique_id=1491427947 instance=ExtResource("13_kvuet")]
+position = Vector2(1145, -222)
+
+[node name="Enemy20" parent="enemies" unique_id=225942676 instance=ExtResource("13_kvuet")]
+position = Vector2(1461, -232)
+
+[node name="Enemy21" parent="enemies" unique_id=376257843 instance=ExtResource("13_kvuet")]
+position = Vector2(1525, -229)
+
+[node name="Enemy22" parent="enemies" unique_id=216718496 instance=ExtResource("13_kvuet")]
+position = Vector2(1440, 100)
+
+[node name="Enemy23" parent="enemies" unique_id=1155119365 instance=ExtResource("13_kvuet")]
+position = Vector2(1502, 99)
+
+[node name="Enemy24" parent="enemies" unique_id=2058551349 instance=ExtResource("13_kvuet")]
+position = Vector2(2165, -162)
+
+[node name="Enemy25" parent="enemies" unique_id=563460313 instance=ExtResource("13_kvuet")]
+position = Vector2(2074, -117)
+
+[node name="Enemy26" parent="enemies" unique_id=1553264867 instance=ExtResource("13_kvuet")]
+position = Vector2(2077, -43)
+
+[node name="Enemy27" parent="enemies" unique_id=602361987 instance=ExtResource("13_kvuet")]
+position = Vector2(2081, 42)
+
+[node name="Enemy28" parent="enemies" unique_id=1071584252 instance=ExtResource("13_kvuet")]
+position = Vector2(2152, 74)
+
+[node name="Enemy9" parent="enemies" unique_id=227641530 instance=ExtResource("13_kvuet")]
+position = Vector2(880, 99)
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
