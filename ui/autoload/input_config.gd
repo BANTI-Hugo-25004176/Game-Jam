@@ -8,7 +8,7 @@ const PATH := "user://controls.cfg"
 
 ## Actions de jeu remappables (dans l'ordre d'affichage).
 const ACTIONS: Array[String] = [
-	"move_up", "move_down", "move_left", "move_right", "dash", "shoot", "pause",
+	"move_up", "move_down", "move_left", "move_right", "dash", "shoot", "reload", "pause",
 ]
 
 ## Sensibilité de visée manette = vitesse de rotation de l'arme vers le stick droit

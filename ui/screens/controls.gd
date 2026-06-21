@@ -16,7 +16,7 @@ signal closed
 const ACTION_KEYS := {
 	"move_up": "CTRL_UP", "move_down": "CTRL_DOWN",
 	"move_left": "CTRL_LEFT", "move_right": "CTRL_RIGHT",
-	"dash": "CTRL_DASH", "shoot": "CTRL_SHOOT", "pause": "CTRL_PAUSE",
+	"dash": "CTRL_DASH", "shoot": "CTRL_SHOOT", "reload": "CTRL_RELOAD", "pause": "CTRL_PAUSE",
 }
 
 var _listening_action: String = ""
