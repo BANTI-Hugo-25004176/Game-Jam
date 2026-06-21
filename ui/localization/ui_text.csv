@@ -34,3 +34,16 @@ CTRL_DASH,Dash,Dash
 CTRL_SHOOT,Shoot,Tirer
 CTRL_RELOAD,Reload,Recharger
 CTRL_PAUSE,Pause,Pause
+TUTO_ACTION,Action,Action
+TUTO_MOVE,Move,Se déplacer
+TUTO_AIM,Aim,Viser
+TUTO_MOUSE,Mouse,Souris
+TUTO_LSTICK,Left stick,Stick gauche
+TUTO_RSTICK,Right stick,Stick droit
+PAD_LSTICK,L stick,Stick G
+PAD_RSTICK,R stick,Stick D
+PAD_DPAD,D-pad,Croix
+PAD_UP,Up,Haut
+PAD_DOWN,Down,Bas
+PAD_LEFT,Left,Gauche
+PAD_RIGHT,Right,Droite

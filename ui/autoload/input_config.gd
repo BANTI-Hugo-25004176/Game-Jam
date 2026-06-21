@@ -126,25 +126,30 @@ func display_label(action: String, kind: String) -> String:
 		return pad_axis_label(ev.axis, ev.axis_value)
 	return "?"
 
-## Noms manette (style Xbox, ce que le joueur lit sur sa manette).
+## Noms manette (style Xbox) — universels, pas besoin de traduction (A/B/X/Y…).
+## La croix directionnelle (11-14) et les sticks/axes sont traduits (FR/EN).
 const PAD_BUTTONS := {
 	0: "A", 1: "B", 2: "X", 3: "Y",
 	4: "Select", 5: "Guide", 6: "Start",
 	7: "L3", 8: "R3", 9: "LB", 10: "RB",
-	11: "Croix Haut", 12: "Croix Bas", 13: "Croix Gauche", 14: "Croix Droite",
 }
 
 func pad_button_label(index: int) -> String:
+	match index:
+		11: return tr("PAD_DPAD") + " " + tr("PAD_UP")
+		12: return tr("PAD_DPAD") + " " + tr("PAD_DOWN")
+		13: return tr("PAD_DPAD") + " " + tr("PAD_LEFT")
+		14: return tr("PAD_DPAD") + " " + tr("PAD_RIGHT")
 	return PAD_BUTTONS.get(index, "Bouton %d" % index)
 
 func pad_axis_label(axis: int, value: float) -> String:
 	match axis:
 		4: return "L2"
 		5: return "R2"
-		0: return "Stick G " + ("Droite" if value > 0.0 else "Gauche")
-		1: return "Stick G " + ("Bas" if value > 0.0 else "Haut")
-		2: return "Stick D " + ("Droite" if value > 0.0 else "Gauche")
-		3: return "Stick D " + ("Bas" if value > 0.0 else "Haut")
+		0: return tr("PAD_LSTICK") + " " + tr("PAD_RIGHT" if value > 0.0 else "PAD_LEFT")
+		1: return tr("PAD_LSTICK") + " " + tr("PAD_DOWN" if value > 0.0 else "PAD_UP")
+		2: return tr("PAD_RSTICK") + " " + tr("PAD_RIGHT" if value > 0.0 else "PAD_LEFT")
+		3: return tr("PAD_RSTICK") + " " + tr("PAD_DOWN" if value > 0.0 else "PAD_UP")
 	return "Axe %d %s" % [axis, "+" if value > 0.0 else "-"]
 
 ## Libellé d'une touche adapté à la disposition clavier réelle (AZERTY/QWERTY) :

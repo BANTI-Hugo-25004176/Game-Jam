@@ -3,9 +3,9 @@ extends Control
 ## Écran de crédits.
 ##
 ## ╔══════════════════════════════════════════════════════════════════╗
-## ║  POUR MODIFIER LES CRÉDITS : édite UNIQUEMENT la constante         ║
-## ║  CREDITS ci-dessous. C'est du BBCode (balises entre crochets).     ║
-## ║  Exemples : [b]gras[/b], [i]italique[/i], [font_size=40]gros[/...] ║
+## ║  POUR MODIFIER : édite CREDITS_FR (français) ET CREDITS_EN         ║
+## ║  (anglais) ci-dessous. La bonne version est choisie selon la       ║
+## ║  langue. C'est du BBCode : [b]gras[/b], [i]ital[/i], [font_size=]. ║
 ## ║  Une ligne vide = un saut de ligne. Rien d'autre à toucher.        ║
 ## ╚══════════════════════════════════════════════════════════════════╝
 ##
@@ -17,7 +17,7 @@ signal closed
 
 @export_file("*.tscn") var back_scene: String = "res://ui/screens/main_menu.tscn"
 
-const CREDITS := "[center][font_size=56]AXEL[/font_size]
+const CREDITS_FR := "[center][font_size=56]AXEL[/font_size]
 [i]— démo —[/i]
 
 Game Jam « Pixels en Provence » · juin 2026
@@ -55,11 +55,49 @@ configuration d'export (Windows/Web), cet écran.
 
 [font_size=40]Merci d'avoir joué ![/font_size][/center]"
 
+const CREDITS_EN := "[center][font_size=56]AXEL[/font_size]
+[i]— demo —[/i]
+
+Game Jam \"Pixels en Provence\" · June 2026
+
+
+[font_size=30]TEAM[/font_size]
+[b]Timothée Beghin[/b] — UI · menus · HUD · controls
+[b]Timéo Morsilli[/b] — player · weapons · gamepad · sound
+[b]Enrique Ruiz[/b] — enemies · combat · boss
+[b]Hugo Banti[/b] — intro cutscene
+[b]Vladislav Dumont[/b] — map · combat
+
+
+[font_size=30]ASSETS[/font_size]
+\"DIESELPUNK\" font — Dan Zadorozny / Iconian Fonts
+[i]iconian.com — free for academic use[/i]
+Player sprite — Nicolas Zoppi
+Weapon sprite — Vladislav Dumont
+Sound — Timéo Morsilli
+[i][other assets: to be completed][/i]
+
+
+[font_size=30]TOOLS[/font_size]
+Godot Engine 4.7
+
+
+[font_size=30]CLAUDE CODE[/font_size]
+[i]Timothée's AI assistant (lent by Olivier COUTHAUD)[/i]
+PR reviews + Godot validation (headless),
+HUD & Game Over screen, controls config menu
+(keyboard/gamepad remap, sensitivity),
+menu flow fixes, FR/EN localization,
+export setup (Windows/Web), this screen.
+
+
+[font_size=40]Thanks for playing![/font_size][/center]"
+
 @onready var _body: RichTextLabel = %Body
 @onready var _back: Button = %BackButton
 
 func _ready() -> void:
-	_body.text = CREDITS
+	_body.text = CREDITS_EN if TranslationServer.get_locale().begins_with("en") else CREDITS_FR
 	_back.text = tr("OPT_BACK")
 	_back.pressed.connect(_on_back)
 	_back.grab_focus.call_deferred()
