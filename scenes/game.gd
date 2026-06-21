@@ -14,6 +14,7 @@ func _ready():
 	_hud = HUD_SCENE.instantiate()
 	add_child(_hud)
 	jouer_cinematique()
+	$AudioStreamPlayer2D.play()
 
 func _process(_delta: float) -> void:
 	if animation_player.is_playing():

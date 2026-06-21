@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cg73h076bhqd1" path="res://scenes/world/light.tscn" id="8_0tnpc"]
 [ext_resource type="Shader" uid="uid://uvwi4mmx7owm" path="res://shaders/fog.gdshader" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://scenes/Enemy/Enemy.tscn" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://e1hxi6pjh2ur" path="res://assets/SFX/axel.mp3" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
 texture = ExtResource("1_p57ef")
@@ -1219,5 +1220,9 @@ offset_bottom = 758.0
 
 [node name="Enemy" parent="." unique_id=1131615112 instance=ExtResource("9_0tnpc")]
 position = Vector2(322, -49)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1714721191]
+stream = ExtResource("12_dinhu")
+parameters/looping = true
 
 [connection signal="animation_finished" from="Actor/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
