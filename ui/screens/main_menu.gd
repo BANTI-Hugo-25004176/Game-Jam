@@ -14,9 +14,8 @@ func _on_action(action:String)->void:
 		"quit":
 			get_tree().quit()
 		"play":
-			print("[MainMenu] 'Play' pressed — wire this to the game scene when it exists.")
 			UI.change_scene("res://scenes/game.tscn")
 		"options":
-			print("[MainMenu] 'Options' pressed — wire this to the Options screen.")
+			UI.change_scene("res://ui/screens/options.tscn")
 		_:
 			print("[MainMenu] Unhandled action: %s" % action)

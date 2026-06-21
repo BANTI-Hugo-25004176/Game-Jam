@@ -11,9 +11,9 @@ const ACTIONS: Array[String] = [
 	"move_up", "move_down", "move_left", "move_right", "dash", "shoot", "pause",
 ]
 
-## Zone morte du stick droit pour la visée manette (sert de "sensibilité" :
-## plus la valeur est basse, plus la visée réagit tôt). Lue par le gun.
-var aim_deadzone: float = 0.3
+## Sensibilité de visée manette = vitesse de rotation de l'arme vers le stick droit
+## (radians/seconde environ ; plus haut = visée plus vive). Lue par le gun.
+var aim_sensitivity: float = 8.0
 
 var _defaults: Dictionary = {}  # action -> Array[InputEvent] (snapshot des défauts projet)
 
@@ -57,7 +57,7 @@ func reset_defaults() -> void:
 			InputMap.action_erase_events(action)
 			for ev in _defaults[action]:
 				InputMap.action_add_event(action, ev)
-	aim_deadzone = 0.3
+	aim_sensitivity = 8.0
 	save_config()
 
 # --- Persistance ---
@@ -71,7 +71,7 @@ func save_config() -> void:
 			cfg.set_value("keyboard", action, _encode(kb))
 		if pad != null:
 			cfg.set_value("controller", action, _encode(pad))
-	cfg.set_value("aim", "deadzone", aim_deadzone)
+	cfg.set_value("aim", "sensitivity", aim_sensitivity)
 	cfg.save(PATH)
 
 func load_config() -> void:
@@ -83,7 +83,7 @@ func load_config() -> void:
 			rebind(action, "key", _decode(cfg.get_value("keyboard", action)))
 		if cfg.has_section_key("controller", action):
 			rebind(action, "pad", _decode(cfg.get_value("controller", action)))
-	aim_deadzone = cfg.get_value("aim", "deadzone", aim_deadzone)
+	aim_sensitivity = cfg.get_value("aim", "sensitivity", aim_sensitivity)
 
 func _encode(ev: InputEvent) -> Dictionary:
 	if ev is InputEventKey:

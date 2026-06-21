@@ -21,27 +21,26 @@ func _physics_process(delta: float) -> void:
 		fire()
 		temps_depuis_dernier_tir = 0.0
 
-	_viser()
+	_viser(delta)
 
 ## Oriente l'arme : stick droit en priorité (manette), sinon la souris.
-func _viser() -> void:
+func _viser(delta: float) -> void:
 	var stick := Vector2(
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
 
-	# Sensibilité réglable depuis le menu Contrôles (sinon valeur par défaut).
-	var deadzone := AIM_DEADZONE
-	var cfg := get_node_or_null("/root/InputConfig")
-	if cfg != null:
-		deadzone = cfg.aim_deadzone
-
 	var direction : Vector2
-	if stick.length() >= deadzone:
-		# Visée à la manette : on pointe dans le sens du stick droit.
-		rotation = stick.angle()
+	if stick.length() >= AIM_DEADZONE:
+		# Visée manette : on tourne vers le stick à une vitesse = sensibilité (réglable
+		# dans le menu Contrôles) → la sensibilité change vraiment la vivacité de visée.
+		var sensitivity := 8.0
+		var cfg := get_node_or_null("/root/InputConfig")
+		if cfg != null:
+			sensitivity = cfg.aim_sensitivity
+		rotation = rotate_toward(rotation, stick.angle(), sensitivity * delta)
 		direction = stick
 	else:
-		# Repli souris (clavier/souris).
+		# Repli souris (clavier/souris) : visée instantanée.
 		look_at(get_global_mouse_position())
 		direction = get_global_mouse_position() - global_position
 
