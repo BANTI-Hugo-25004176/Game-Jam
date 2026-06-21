@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8xq2cr3d1ts0"]
+[gd_scene format=3 uid="uid://b8xq2cr3d1ts0"]
 
 [ext_resource type="Script" path="res://ui/screens/credits.gd" id="1_cr"]
 [ext_resource type="Theme" path="res://ui/theme/game_theme.tres" id="2_th"]

@@ -45,7 +45,7 @@ Godot Engine 4.7
 
 
 [font_size=30]CLAUDE CODE[/font_size]
-[i]Assistant IA de Timothée[/i]
+[i]Assistant IA de Timothée (Prété par Olivier COUTHAUD)[/i]
 Revues de PR + validation Godot (headless),
 HUD & écran Game Over, menu de configuration des
 contrôles (remap clavier/manette, sensibilité),
