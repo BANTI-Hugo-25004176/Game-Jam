@@ -8,11 +8,19 @@ extends CharacterBody2D
 ## Réglages exposés dans l'inspecteur (PV, vitesse, dégâts, AoE optionnelle).
 
 signal died
+## Émis quand le combat commence (joueur à portée) → affiche la barre de vie.
+signal engaged(boss_name: String, max_hp: int)
+## Émis à chaque changement de PV → met à jour la barre de vie.
+signal health_changed(hp: int)
 
 @export var max_health: int = 1000
 @export var speed: float = 90.0
 @export var ranged_damage: int = 20
 @export var melee_damage: int = 40
+## Nom affiché sur la barre de vie du boss.
+@export var boss_name: String = "MINIBOSS"
+## Distance à laquelle le combat se déclenche (barre de vie apparaît).
+@export var engage_distance: float = 500.0
 ## Fraction de PV sous laquelle le boss passe en phase corps-à-corps.
 @export var phase2_threshold: float = 0.5
 
@@ -35,6 +43,15 @@ var _fire_t := 0.0
 var _melee_cd := 1.0
 var _melee_t := 0.0
 var _aoe_t := 0.0
+var _engaged := false
+
+## Démarre le combat (une seule fois) : affiche la barre de vie du boss.
+func _engage() -> void:
+	if _engaged:
+		return
+	_engaged = true
+	engaged.emit(boss_name, max_health)
+	health_changed.emit(current_health)
 
 func _ready() -> void:
 	current_health = max_health
@@ -54,6 +71,9 @@ func _physics_process(delta: float) -> void:
 	var to_player: Vector2 = player_ref.global_position - global_position
 	var dist := to_player.length()
 	var dir := to_player.normalized()
+
+	if dist <= engage_distance:
+		_engage()
 
 	if phase == 1:
 		_phase1(delta, dir, dist)
@@ -106,7 +126,9 @@ func _aoe(delta: float) -> void:
 
 ## Reçoit les dégâts des balles du joueur (même contrat que les ennemis).
 func take_damage(amount: int) -> void:
+	_engage()  # un tir qui touche déclenche aussi le combat / la barre
 	current_health -= amount
+	health_changed.emit(current_health)
 	if phase == 1 and current_health <= int(max_health * phase2_threshold):
 		_enter_phase2()
 	if current_health <= 0:
