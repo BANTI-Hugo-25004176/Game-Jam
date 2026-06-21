@@ -20,6 +20,7 @@ MENU_ITEM,Item,Élément
 HUD_HEALTH,Health,Vie
 HUD_AMMO,Ammo,Munitions
 HUD_KILLS,Kills,Éliminations
+HUD_RELOADING,Reloading…,RECHARGE…
 OPT_CONTROLS,Controls,Contrôles
 CTRL_TITLE,Controls,Contrôles
 CTRL_KEYBOARD,Keyboard,Clavier
