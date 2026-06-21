@@ -121,10 +121,31 @@ func display_label(action: String, kind: String) -> String:
 	if ev is InputEventKey:
 		return key_label(ev)
 	if ev is InputEventJoypadButton:
-		return "Bouton %d" % ev.button_index
+		return pad_button_label(ev.button_index)
 	if ev is InputEventJoypadMotion:
-		return "Axe %d %s" % [ev.axis, "+" if ev.axis_value > 0.0 else "-"]
+		return pad_axis_label(ev.axis, ev.axis_value)
 	return "?"
+
+## Noms manette (style Xbox, ce que le joueur lit sur sa manette).
+const PAD_BUTTONS := {
+	0: "A", 1: "B", 2: "X", 3: "Y",
+	4: "Select", 5: "Guide", 6: "Start",
+	7: "L3", 8: "R3", 9: "LB", 10: "RB",
+	11: "Croix Haut", 12: "Croix Bas", 13: "Croix Gauche", 14: "Croix Droite",
+}
+
+func pad_button_label(index: int) -> String:
+	return PAD_BUTTONS.get(index, "Bouton %d" % index)
+
+func pad_axis_label(axis: int, value: float) -> String:
+	match axis:
+		4: return "L2"
+		5: return "R2"
+		0: return "Stick G " + ("Droite" if value > 0.0 else "Gauche")
+		1: return "Stick G " + ("Bas" if value > 0.0 else "Haut")
+		2: return "Stick D " + ("Droite" if value > 0.0 else "Gauche")
+		3: return "Stick D " + ("Bas" if value > 0.0 else "Haut")
+	return "Axe %d %s" % [axis, "+" if value > 0.0 else "-"]
 
 ## Libellé d'une touche adapté à la disposition clavier réelle (AZERTY/QWERTY) :
 ## une touche physique est traduite en son étiquette locale (ex. physique W → "Z"
