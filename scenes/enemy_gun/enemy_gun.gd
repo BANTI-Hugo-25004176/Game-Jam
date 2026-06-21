@@ -1,10 +1,10 @@
 extends CharacterBody2D
-enum State { IDLE, CHASE, SHOOT }
 
-@export var speed : float = 100.0
+enum State { IDLE, CHASE, SHOOT }
+@export var speed : float = 75.0
 @export var attack_damage : int = 10
 @export var max_health : int = 30
-@export var portee_tir : float = 150.0 # distance à partir de laquelle il tire au lieu de courir
+@export var portee_tir : float = 200.0 # Distance idéale de combat
 
 var current_state : State = State.IDLE
 var current_health : int
@@ -28,27 +28,34 @@ func _physics_process(delta: float) -> void:
 		State.IDLE:
 			velocity = Vector2.ZERO
 
-		State.CHASE:
+		State.CHASE, State.SHOOT:
 			if player_ref:
 				var distance = global_position.distance_to(player_ref.global_position)
-
-				if distance > portee_tir:
-					var direction = (player_ref.global_position - global_position).normalized()
-					velocity = direction * speed
-				else:
-					velocity = Vector2.ZERO
-					current_state = State.SHOOT
-
-		State.SHOOT:
-			velocity = Vector2.ZERO
-			if player_ref:
-				var distance = global_position.distance_to(player_ref.global_position)
-
+				var direction = (player_ref.global_position - global_position).normalized()
+				
+				# Zone de confort d'un tireur (ex: entre 120 et 150 pixels)
+				var marge_recul = 30.0 
+				
+				# CAS 1 : Le joueur est trop loin -> L'ennemi avance
 				if distance > portee_tir:
 					current_state = State.CHASE
+					velocity = direction * speed
+					# Il peut quand même tenter de tirer s'il est presque à portée
+					gun.update_aim_and_shoot(player_ref.global_position, delta, false)
+					
+				# CAS 2 : Le joueur est trop près -> L'ennemi recule en tirant !
+				elif distance < (portee_tir - marge_recul):
+					current_state = State.SHOOT
+					velocity = -direction * (speed * 0.8) # Recule un poil plus lentement qu'il n'avance
+					gun.update_aim_and_shoot(player_ref.global_position, delta, true)
+					
+				# CAS 3 : Distance parfaite -> Il s'immobilise et sulfate le joueur
 				else:
-					var should_shoot = distance <= portee_tir
-					gun.update_aim_and_shoot(player_ref.global_position, delta, should_shoot)
+					current_state = State.SHOOT
+					velocity = Vector2.ZERO
+					gun.update_aim_and_shoot(player_ref.global_position, delta, true)
+			else:
+				velocity = Vector2.ZERO
 
 	move_and_slide()
 

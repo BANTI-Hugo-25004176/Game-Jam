@@ -1,9 +1,9 @@
 extends Node2D  # ou CharacterBody2D selon ce que "Egun"/"Gun" est réellement dans ta scène
 
-var bullet_path = preload("res://scenes/bullet/bullet.tscn")
+var bullet_path = preload("res://scenes/enemy_bullet/bullet.tscn")
 var ammo = 30
 var reloading = false
-var cadence_de_tir : float = 2.0
+var cadence_de_tir : float = 0.75
 var delai_entre_tirs : float = 1.0 / cadence_de_tir
 var temps_depuis_dernier_tir : float = 0.0
 
