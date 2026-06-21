@@ -14,6 +14,7 @@ var current_health: int
 @export var rotate_flag: bool = true
 @export_enum("right", "dash_right", "left") var etat_initial: String = "right"
 
+
 @onready var anim: AnimatedSprite2D = $BodyRotate/AnimatedSprite2D
 
 const PAUSE_MENU = preload("res://ui/screens/pause.tscn")
