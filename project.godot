@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UI="*res://ui/autoload/ui_manager.tscn"
 Stats="*res://scenes/stats.gd"
+InputConfig="*res://ui/autoload/input_config.gd"
 
 [input]
 
