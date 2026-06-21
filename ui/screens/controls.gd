@@ -70,10 +70,9 @@ func _event_text(ev: InputEvent) -> String:
 	if ev is InputEventKey:
 		return InputConfig.key_label(ev)
 	if ev is InputEventJoypadButton:
-		return "Bouton %d" % ev.button_index
+		return InputConfig.pad_button_label(ev.button_index)
 	if ev is InputEventJoypadMotion:
-		var sign_txt := "+" if ev.axis_value > 0.0 else "-"
-		return "Axe %d %s" % [ev.axis, sign_txt]
+		return InputConfig.pad_axis_label(ev.axis, ev.axis_value)
 	return "?"
 
 func _start_listen(action: String, kind: String) -> void:
