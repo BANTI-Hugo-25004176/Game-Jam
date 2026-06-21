@@ -21,6 +21,10 @@ func _physics_process(delta: float) -> void:
 		fire()
 		temps_depuis_dernier_tir = 0.0
 
+	# Rechargement manuel (touche R / bouton manette mappé sur "reload").
+	if Input.is_action_just_pressed("reload"):
+		start_reload()
+
 	_viser(delta)
 
 ## Oriente l'arme : stick droit en priorité (manette), sinon la souris.
@@ -58,8 +62,16 @@ func fire():
 		get_tree().current_scene.add_child(bullet)
 		ammo -= 1
 		if ammo == 0:
-			reloading = true
-			timer.start()
+			start_reload()
+
+
+## Lance le rechargement (manuel via l'action "reload"/touche R, ou auto à court
+## de munitions). Ignoré si déjà en rechargement ou chargeur déjà plein.
+func start_reload() -> void:
+	if reloading or ammo == 30:
+		return
+	reloading = true
+	timer.start()
 
 
 func _on_timer_timeout() -> void:

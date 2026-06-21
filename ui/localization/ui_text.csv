@@ -30,4 +30,5 @@ CTRL_LEFT,Move left,Gauche
 CTRL_RIGHT,Move right,Droite
 CTRL_DASH,Dash,Dash
 CTRL_SHOOT,Shoot,Tirer
+CTRL_RELOAD,Reload,Recharger
 CTRL_PAUSE,Pause,Pause
