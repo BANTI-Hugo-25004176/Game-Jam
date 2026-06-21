@@ -11,6 +11,7 @@ MENU_QUIT,Quit,Quitter
 MENU_RESUME,Resume,Reprendre
 MENU_MAIN_MENU,Main Menu,Menu principal
 MENU_PLAY_AGAIN,Play Again,Rejouer
+MENU_CREDITS,Credits,Crédits
 OPT_VOLUME,Volume,Volume
 OPT_FULLSCREEN,Fullscreen,Plein écran
 OPT_LANGUAGE,Language,Langue
