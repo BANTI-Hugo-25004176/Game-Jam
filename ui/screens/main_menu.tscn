@@ -9,6 +9,11 @@ script = ExtResource("3_mi")
 text_key = "MENU_PLAY"
 action = "play"
 
+[sub_resource type="Resource" id="Res_tutorial"]
+script = ExtResource("3_mi")
+text_key = "MENU_TUTORIAL"
+target_scene = "res://ui/screens/tutorial.tscn"
+
 [sub_resource type="Resource" id="Res_options"]
 script = ExtResource("3_mi")
 text_key = "MENU_OPTIONS"
@@ -32,4 +37,4 @@ script = ExtResource("1_mm")
 [node name="MenuScreen" parent="." unique_id=1845727160 instance=ExtResource("2_ms")]
 layout_mode = 1
 title_key = "TITLE_MAIN"
-items = Array[ExtResource("3_mi")]([SubResource("Res_play"), SubResource("Res_options"), SubResource("Res_quit")])
+items = Array[ExtResource("3_mi")]([SubResource("Res_play"), SubResource("Res_tutorial"), SubResource("Res_options"), SubResource("Res_quit")])

@@ -111,3 +111,18 @@ func _decode(d: Dictionary) -> InputEvent:
 			e.axis_value = d.get("value", 0.0)
 			return e
 	return null
+
+## Libellé lisible (touche/bouton) de la 1re entrée d'une action — pour les
+## menus et le tutoriel. Reflète les remaps en cours (lit l'InputMap).
+func display_label(action: String, kind: String) -> String:
+	var ev := first_event_of(action, kind)
+	if ev == null:
+		return "—"
+	if ev is InputEventKey:
+		var code: int = ev.physical_keycode if ev.physical_keycode != 0 else ev.keycode
+		return OS.get_keycode_string(code)
+	if ev is InputEventJoypadButton:
+		return "Bouton %d" % ev.button_index
+	if ev is InputEventJoypadMotion:
+		return "Axe %d %s" % [ev.axis, "+" if ev.axis_value > 0.0 else "-"]
+	return "?"
