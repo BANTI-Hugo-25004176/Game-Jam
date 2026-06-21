@@ -29,8 +29,14 @@ func _viser() -> void:
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
 
+	# Sensibilité réglable depuis le menu Contrôles (sinon valeur par défaut).
+	var deadzone := AIM_DEADZONE
+	var cfg := get_node_or_null("/root/InputConfig")
+	if cfg != null:
+		deadzone = cfg.aim_deadzone
+
 	var direction : Vector2
-	if stick.length() >= AIM_DEADZONE:
+	if stick.length() >= deadzone:
 		# Visée à la manette : on pointe dans le sens du stick droit.
 		rotation = stick.angle()
 		direction = stick
