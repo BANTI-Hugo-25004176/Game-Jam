@@ -10,6 +10,11 @@ text_key = "MENU_PLAY_AGAIN"
 action = "retry"
 target_scene = ""
 
+[sub_resource type="Resource" id="Res_credits"]
+script = ExtResource("3_mi")
+text_key = "MENU_CREDITS"
+target_scene = "res://ui/screens/credits.tscn"
+
 [sub_resource type="Resource" id="Res_menu"]
 script = ExtResource("3_mi")
 text_key = "MENU_MAIN_MENU"
@@ -33,4 +38,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 title_key = "TITLE_VICTORY"
-items = Array[ExtResource("3_mi")]([SubResource("Res_retry"), SubResource("Res_menu")])
+items = Array[ExtResource("3_mi")]([SubResource("Res_retry"), SubResource("Res_credits"), SubResource("Res_menu")])
