@@ -11,8 +11,6 @@ func _ready()->void:
 func _on_action(action:String)->void:
 	match action:
 		"retry":
-			# TODO: when the game scene exists, restart it, e.g.:
-			#   get_node_or_null("/root/UI").change_scene("res://path/to/game.tscn")
-			print("[EndScreen] 'Retry' pressed — wire to the game scene when it exists.")
+			UI.change_scene("res://scenes/game.tscn")
 		_:
 			pass
