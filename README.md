@@ -51,6 +51,7 @@ Dans une société dieselpunk marquée par la révolution industrielle, vous inc
 ## 🛠️ Stack technique & outils
 
 *   **Moteur de jeu :** Godot Engine 4.7
+*   **Décors & tilesets :** [Haydeos](https://haydeos.itch.io/) — Dieselpunk Slums 1 & 2, Dieselpunk Houses, Ferrum: Junkyard
 *   **Police :** « DIESELPUNK » — Dan Zadorozny / Iconian Fonts
 *   **Audio :** musiques & effets sonores originaux (Timéo Morsilli)
 *   **Gestion de version :** Git & GitHub
