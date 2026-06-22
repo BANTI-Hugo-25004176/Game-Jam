@@ -37,7 +37,9 @@ Police « DIESELPUNK » — Dan Zadorozny / Iconian Fonts
 Sprite du joueur — Nicolas Zoppi
 Sprite de l'arme — Vladislav Dumont
 Sons — Timéo Morsilli
-[i][autres assets : à compléter][/i]
+Décors & tilesets — Haydeos
+[i]Dieselpunk Slums 1 & 2, Dieselpunk Houses,[/i]
+[i]Ferrum: Junkyard — haydeos.itch.io[/i]
 
 
 [font_size=30]OUTILS[/font_size]
@@ -75,7 +77,9 @@ Game Jam \"Pixels en Provence\" · June 2026
 Player sprite — Nicolas Zoppi
 Weapon sprite — Vladislav Dumont
 Sound — Timéo Morsilli
-[i][other assets: to be completed][/i]
+Environments & tilesets — Haydeos
+[i]Dieselpunk Slums 1 & 2, Dieselpunk Houses,[/i]
+[i]Ferrum: Junkyard — haydeos.itch.io[/i]
 
 
 [font_size=30]TOOLS[/font_size]
